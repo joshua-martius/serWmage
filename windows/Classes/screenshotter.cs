@@ -14,12 +14,12 @@ namespace serwmImageUploader.Classes
 
         public static string TakeScreenshot(string filepath)
         {
-            return Screenshotter.TakeScreenshot(filepath, 1920, 1080);
+            return TakeScreenshot(filepath, 1920, 1080);
         }
 
         public static string TakeScreenshot()
         {
-            return Screenshotter.TakeScreenshot(Application.StartupPath, 1920, 1080);
+            return TakeScreenshot(Application.StartupPath, 1920, 1080);
         }
         public static string TakeScreenshot(string filepath, int width, int height)
         {
@@ -46,5 +46,33 @@ namespace serwmImageUploader.Classes
                 throw ex;
             }
         }
+
+        public static string TakeScreenshot(string filepath, Rectangle rect)
+        {
+            try
+            {
+                //Creating a new Bitmap object
+                Bitmap captureBitmap = new Bitmap(rect.Width + 1920, rect.Height, PixelFormat.Format32bppArgb);
+                //Bitmap captureBitmap = new Bitmap(int width, int height, PixelFormat);
+                //Creating a Rectangle object which will  
+                //capture our Current Screen
+                Rectangle captureRectangle = rect;
+                //Creating a New Graphics Object
+                Graphics captureGraphics = Graphics.FromImage(captureBitmap);
+                //Copying Image from The Screen
+                captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
+                //Saving the Image File
+
+                filepath = string.Format("{0}\\tmp.png", filepath);
+                captureBitmap.Save(filepath, ImageFormat.Png);
+                return filepath;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
     }
 }

@@ -13,6 +13,8 @@ using System.Windows.Forms;
 using Renci.SshNet;
 using serwmImageUploader.Classes;
 using Renci.SshNet.Sftp;
+using serwmImageUploader.Forms;
+using System.Diagnostics;
 
 namespace serwmImageUploader
 {
@@ -24,6 +26,16 @@ namespace serwmImageUploader
         {
             InitializeComponent();
             if (!InitializeConfiguration()) Environment.Exit(0);
+        }
+
+        private void Drawer_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form send = (Form)sender;
+            if (send.DialogResult == DialogResult.Cancel) return;
+            string link = _web.UploadScreenshot(Application.StartupPath + "\\tmp.png");
+            this.CopyLinkToClipboard(link);
+            Process.Start(link);
+            Console.Beep();
         }
 
         private bool InitializeConfiguration()
@@ -44,17 +56,27 @@ namespace serwmImageUploader
             HotKey HK = new HotKey();
             HK.OwnerForm = this;
             HK.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK_trigger);
-            HK.AddHotKey(Keys.R, HotKey.MODKEY.MOD_CONTROL, "mainHK");
+            HK.AddHotKey(Keys.R, HotKey.MODKEY.MOD_CONTROL, "CTRL-R");
+            HK.AddHotKey(Keys.F2, HotKey.MODKEY.MOD_NONE, "F2");
             return true;
         }
 
         private void HK_trigger(string ID)
         {
             Console.Beep();
-            string path = Screenshotter.TakeScreenshot();
-            string link = _web.UploadScreenshot(path);
-            this.CopyLinkToClipboard(link);
-            Console.Beep();
+            if(ID == "CTRL-R")
+            {
+                string path = Screenshotter.TakeScreenshot();
+                string link = _web.UploadScreenshot(path);
+                this.CopyLinkToClipboard(link);
+                Console.Beep();
+            }
+            else if(ID == "F2")
+            {
+                frmDrawInstance drawer = new frmDrawInstance();
+                drawer.FormClosed += this.Drawer_FormClosed;
+                drawer.Show();
+            }
         }
 
         private void CopyLinkToClipboard(string link)
