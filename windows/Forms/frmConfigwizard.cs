@@ -25,6 +25,7 @@ namespace serwmImageUploader
         {
             _config = new Configuration(tbxUsername.Text, tbxPassword.Text);
             _config.Save();
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
     }
