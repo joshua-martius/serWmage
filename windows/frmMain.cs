@@ -18,12 +18,17 @@ namespace serwmImageUploader
     public partial class frmMain : Form
     {
         private Configuration _config = null;
-        private const string _baseString = "ABCDEFGHIJKLMNOPQRSTUVXYZabc-,defghijklmnopqrstuvwxyz0123456789";
+        private const string _baseString = "ABCDEFGHIJKLMNOPQ_RSTUVXYZabc-,defghijklmnopqrstuvwxyz0123456789";
 
 
         public frmMain()
         {
             InitializeComponent();
+            if (!InitializeConfiguration()) Environment.Exit(0);
+        }
+
+        private bool InitializeConfiguration()
+        {
             if (!Configuration.Exists)
             {
                 frmConfigwizard frm = new frmConfigwizard();
@@ -33,15 +38,21 @@ namespace serwmImageUploader
                     _config = frm.Config;
                     _config.Save();
                 }
+                else
+                {
+                    Application.Exit();
+                    return false;
+                }
             }
-            _config = Configuration.Load();
+            else _config = Configuration.Load();
 
             HotKey HK = new HotKey();
             HK.OwnerForm = this;
             HK.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK_trigger);
             HK.AddHotKey(Keys.R, HotKey.MODKEY.MOD_CONTROL, "mainHK");
-
+            return true;
         }
+
         private void HK_trigger(string ID)
         {
             string path = this.TakeScreenshot();
