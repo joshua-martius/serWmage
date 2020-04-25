@@ -4,42 +4,47 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace serwmImageUploader
 {
     public class Configuration
     {
-        string _address = string.Empty;
-        string _username = string.Empty;
-        string _password = string.Empty;
+        private const int CONFIG_AMOUNT = 5;
 
-        public string Address { get => this._address; }
-        public string Username { get => this._username; }
-        public string Password { get => this._password; }
+        private string[] _config = new string[CONFIG_AMOUNT];
+        
+        public string Address { get => _config[0]; set => _config[0] = value; }
+        public string Username { get => _config[1]; set => _config[1] = value; }
+        public string Password { get => _config[2]; set => _config[2] = value; }
 
         private static string Filepath { get => string.Format("{0}\\config.ini", System.Windows.Forms.Application.StartupPath); }
 
-        public static string RemoteDirectory { get => string.Format("/home/webserver/webroot/img/"); }
+        public string RemoteDirectory { get => _config[3]; set => _config[3] = value; }
 
         public static bool Exists { get => File.Exists(Configuration.Filepath); }
 
-        public void Save()
-        {
-            string content = string.Format("{0}\n{1}", _username, _password);
-            File.WriteAllText(Configuration.Filepath, content);
-        }
+        public bool OpenImageAfterUpload { get => Convert.ToBoolean(_config[4]); set => _config[4] = value.ToString(); }
+
+        public void Save() => File.WriteAllLines(Configuration.Filepath, _config);
 
         public static Configuration Load()
         {
-            string[] content = File.ReadAllLines(Configuration.Filepath);
-            return new Configuration(content[0], content[1]);
+            try
+            {
+                Configuration config = new Configuration();
+                config._config = File.ReadAllLines(Configuration.Filepath);
+                if (config._config.Length != CONFIG_AMOUNT) throw new Exception("Incomplete configuration!\nDelete your configuration file and create a new one.");
+                return config;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error in Configuration files", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(0);
+                return null;
+            }
         }
 
-        public Configuration(){ this._address = "serwm.com"; }
-        public Configuration(string username, string password) : this()
-        {
-            this._username = username;
-            this._password = password;
-        }
+        public Configuration(){ }
     }
 }

@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.btnHide = new System.Windows.Forms.Button();
+            this.btnOpenConfiguration = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnHide
             // 
-            this.btnHide.Location = new System.Drawing.Point(12, 12);
+            this.btnHide.Location = new System.Drawing.Point(12, 63);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(139, 45);
             this.btnHide.TabIndex = 0;
@@ -41,11 +42,22 @@
             this.btnHide.UseVisualStyleBackColor = true;
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
+            // btnOpenConfiguration
+            // 
+            this.btnOpenConfiguration.Location = new System.Drawing.Point(12, 12);
+            this.btnOpenConfiguration.Name = "btnOpenConfiguration";
+            this.btnOpenConfiguration.Size = new System.Drawing.Size(139, 45);
+            this.btnOpenConfiguration.TabIndex = 1;
+            this.btnOpenConfiguration.Text = "Open Configuration";
+            this.btnOpenConfiguration.UseVisualStyleBackColor = true;
+            this.btnOpenConfiguration.Click += new System.EventHandler(this.btnOpenConfiguration_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(163, 69);
+            this.ClientSize = new System.Drawing.Size(163, 118);
+            this.Controls.Add(this.btnOpenConfiguration);
             this.Controls.Add(this.btnHide);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
@@ -62,6 +74,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnHide;
+        private System.Windows.Forms.Button btnOpenConfiguration;
     }
 }
 

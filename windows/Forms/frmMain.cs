@@ -34,7 +34,7 @@ namespace serwmImageUploader
             if (send.DialogResult == DialogResult.Cancel) return;
             string link = _web.UploadScreenshot(Application.StartupPath + "\\tmp.png");
             this.CopyLinkToClipboard(link);
-            Process.Start(link);
+            if (_web.Config.OpenImageAfterUpload) Process.Start(link);
             Console.Beep();
         }
 
@@ -70,6 +70,7 @@ namespace serwmImageUploader
                     string path = Screenshotter.TakeScreenshot();
                     string link = _web.UploadScreenshot(path);
                     this.CopyLinkToClipboard(link);
+                    if (_web.Config.OpenImageAfterUpload) Process.Start(link);
                     Console.Beep();
                     break;
                 case "F2":
@@ -80,8 +81,8 @@ namespace serwmImageUploader
                 case "BREAK":
                     Console.Beep();
                     Console.Beep();
-                    Application.Exit();       
-                    break;
+                    Application.Exit();
+                    return;
                 default:
                     break;
             }
@@ -95,6 +96,12 @@ namespace serwmImageUploader
         private void btnHide_Click(object sender, EventArgs e)
         {
             this.Hide();
+        }
+
+        private void btnOpenConfiguration_Click(object sender, EventArgs e)
+        {
+            frmConfigwizard frm = new frmConfigwizard(_web.Config);
+            frm.Show();
         }
     }
 }
