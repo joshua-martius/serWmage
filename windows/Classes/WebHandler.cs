@@ -55,19 +55,14 @@ namespace serwmImageUploader.Classes
                 }
             }
             File.Delete(filepath);
-            return string.Format("https:/{0}/{1}.png", _config.Address ,imgID);
+            return string.Format("https:/{0}/{1}.png", _config.Address, imgID);
         }
-
-
 
         private string generateID(int length = 16)
         {
             string output = string.Empty;
             Random rnd = new Random();
-            for (int i = 0; i < length; i++)
-            {
-                output += _baseString[rnd.Next(0, _baseString.Length)];
-            }
+            for (int i = 0; i < length; i++) output += _baseString[rnd.Next(0, _baseString.Length)];
             return output;
         }
     }
