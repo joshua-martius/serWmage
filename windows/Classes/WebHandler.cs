@@ -13,15 +13,30 @@ namespace serwmImageUploader.Classes
         private const string _baseString = "ABCDEFGHIJKLMNOPQ_RSTUVXYZabc-,defghijklmnopqrstuvwxyz0123456789";
         private Configuration _config = null;
 
+        /// <summary>
+        /// The <see cref="Configuration"/> on which the <see cref="WebHandler"/> relies.
+        /// </summary>
         public Configuration Config { get => this._config; set => this._config = value; }
 
+        /// <summary>
+        /// Initializes a new <see cref="WebHandler"/> object with a given <see cref="Configuration"/> set.
+        /// </summary>
+        /// <param name="config">The <see cref="Configuration"/> of the new <see cref="WebHandler"/> object.</param>
         public WebHandler(Configuration config)
         {
             _config = config;
         }
 
+        /// <summary>
+        /// Initializes a blank <see cref="WebHandler"/>.
+        /// </summary>
         public WebHandler() { }
 
+        /// <summary>
+        /// Uploads the given Screenshot to the server which is given in the <see cref="Config"/> object.
+        /// </summary>
+        /// <param name="filepath">The local filepath to the screenshot which shall be uploaded.</param>
+        /// <returns>The URL to the image on the remote imageserver.</returns>
         public string UploadScreenshot(string filepath)
         {
             string imgID = string.Empty;
@@ -58,6 +73,11 @@ namespace serwmImageUploader.Classes
             return string.Format("https:/{0}/{1}.png", _config.Address, imgID);
         }
 
+        /// <summary>
+        /// Generates a random alphanumerical <see cref="string"/> with a given length.
+        /// </summary>
+        /// <param name="length">The length to the generated <see cref="string"/>.</param>
+        /// <returns>A random alphanumerical <see cref="string"/>.</returns>
         private string generateID(int length = 16)
         {
             string output = string.Empty;

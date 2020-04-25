@@ -11,16 +11,33 @@ namespace serwmImageUploader.Classes
 {
     public static class Screenshotter
     {
-
+        // toDo: remove redundancy
+        /// <summary>
+        /// Takes a 1920x1080 screenshot and saves it under the given filepath.
+        /// </summary>
+        /// <param name="filepath">The full path into which the screenshot shall be saved.</param>
+        /// <returns>The full path into which the screenshot has been saved.</returns>
         public static string TakeScreenshot(string filepath)
         {
             return TakeScreenshot(filepath, 1920, 1080);
         }
 
+        /// <summary>
+        /// Takes a 1920x1080 screenshot and saves it into the <see cref="Application.StartupPath"/>.
+        /// </summary>
+        /// <returns>The full path into which the screenshot has been saved.</returns>
         public static string TakeScreenshot()
         {
             return TakeScreenshot(Application.StartupPath, 1920, 1080);
         }
+
+        /// <summary>
+        /// Takes a screenshot with the given <paramref name="width"/> and <paramref name="height"/>, saves it into the given <paramref name="filepath"/>.
+        /// </summary>
+        /// <param name="filepath">The full path into which the screenshot shall be saved.</param>
+        /// <param name="width">The width for the screenshot.</param>
+        /// <param name="height">The height for the screenshot.</param>
+        /// <returns></returns>
         public static string TakeScreenshot(string filepath, int width, int height)
         {
             try
@@ -47,6 +64,12 @@ namespace serwmImageUploader.Classes
             }
         }
 
+        /// <summary>
+        /// Takes a screenshot with the size of the given <paramref name="rect"/> and saves it into <paramref name="filepath"/>.
+        /// </summary>
+        /// <param name="filepath">The full path into which the screenshot shall be saved.</param>
+        /// <param name="rect">The rectangle whoms boundaries the screenshot should have.</param>
+        /// <returns></returns>
         public static string TakeScreenshot(string filepath, Rectangle rect)
         {
             try
