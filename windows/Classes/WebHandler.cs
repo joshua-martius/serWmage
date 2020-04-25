@@ -31,9 +31,16 @@ namespace serwmImageUploader.Classes
                 {
                     sftp.Connect();
                     sftp.ChangeDirectory(_config.RemoteDirectory);
+                    var files = sftp.ListDirectory(_config.RemoteDirectory).ToList();
 
-                    imgID = this.generateID();
-
+                    // ** Duplicate Check
+                    string filename = string.Empty;
+                    do
+                    {
+                        imgID = this.generateID();
+                        filename = imgID + ".png";
+                    } while (!(files.TrueForAll(f => !f.Name.Equals(filename))));
+                    
                     using (var fileStream = new FileStream(filepath, FileMode.Open))
                     {
                         sftp.BufferSize = 4096;
@@ -50,6 +57,8 @@ namespace serwmImageUploader.Classes
             File.Delete(filepath);
             return string.Format("https:/{0}/{1}.png", _config.Address ,imgID);
         }
+
+
 
         private string generateID(int length = 16)
         {
