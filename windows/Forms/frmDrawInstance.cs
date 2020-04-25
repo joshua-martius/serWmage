@@ -23,14 +23,14 @@ namespace serwmImageUploader.Forms
         public frmDrawInstance()
         {
             InitializeComponent();
-            //this.Size = Screen.FromPoint(Cursor.Position).Bounds.Size;
+            this.Size = Screen.FromPoint(Cursor.Position).Bounds.Size;
             int width = Screen.AllScreens.ToList().Sum(scr => scr.Bounds.Width);
             int height = Screen.AllScreens.ToList().Max(scr => scr.Bounds.Height);
             this.StartPosition = FormStartPosition.Manual;
-            this.Size = new Size(width, height);
+            //this.Size = new Size(width, height);
 
             this.CenterToScreen();
-            this.Location = new Point(this.Location.X, this.Location.Y);
+            //this.Location = new Point(this.Location.X, this.Location.Y);
 
 
 

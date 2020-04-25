@@ -58,24 +58,32 @@ namespace serwmImageUploader
             HK.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK_trigger);
             HK.AddHotKey(Keys.R, HotKey.MODKEY.MOD_CONTROL, "CTRL-R");
             HK.AddHotKey(Keys.F2, HotKey.MODKEY.MOD_NONE, "F2");
+            HK.AddHotKey(Keys.Pause, HotKey.MODKEY.MOD_NONE, "BREAK");
             return true;
         }
 
         private void HK_trigger(string ID)
         {
-            Console.Beep();
-            if(ID == "CTRL-R")
+            switch (ID)
             {
-                string path = Screenshotter.TakeScreenshot();
-                string link = _web.UploadScreenshot(path);
-                this.CopyLinkToClipboard(link);
-                Console.Beep();
-            }
-            else if(ID == "F2")
-            {
-                frmDrawInstance drawer = new frmDrawInstance();
-                drawer.FormClosed += this.Drawer_FormClosed;
-                drawer.Show();
+                case "CTRL-R":
+                    string path = Screenshotter.TakeScreenshot();
+                    string link = _web.UploadScreenshot(path);
+                    this.CopyLinkToClipboard(link);
+                    Console.Beep();
+                    break;
+                case "F2":
+                    frmDrawInstance drawer = new frmDrawInstance();
+                    drawer.FormClosed += this.Drawer_FormClosed;
+                    drawer.Show();
+                    break;
+                case "BREAK":
+                    Console.Beep();
+                    Console.Beep();
+                    Application.Exit();       
+                    break;
+                default:
+                    break;
             }
         }
 
