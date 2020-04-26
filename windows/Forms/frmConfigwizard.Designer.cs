@@ -97,7 +97,7 @@
             this.btnSaveRun.Location = new System.Drawing.Point(12, 133);
             this.btnSaveRun.Name = "btnSaveRun";
             this.btnSaveRun.Size = new System.Drawing.Size(283, 23);
-            this.btnSaveRun.TabIndex = 6;
+            this.btnSaveRun.TabIndex = 5;
             this.btnSaveRun.Text = "Save && Run";
             this.btnSaveRun.UseVisualStyleBackColor = true;
             this.btnSaveRun.Click += new System.EventHandler(this.btnSaveRun_Click);
@@ -117,7 +117,7 @@
             this.tbxRemoteDirectory.MaxLength = 128;
             this.tbxRemoteDirectory.Name = "tbxRemoteDirectory";
             this.tbxRemoteDirectory.Size = new System.Drawing.Size(185, 20);
-            this.tbxRemoteDirectory.TabIndex = 7;
+            this.tbxRemoteDirectory.TabIndex = 3;
             // 
             // chkOpenAfterCreation
             // 
@@ -125,7 +125,7 @@
             this.chkOpenAfterCreation.Location = new System.Drawing.Point(110, 110);
             this.chkOpenAfterCreation.Name = "chkOpenAfterCreation";
             this.chkOpenAfterCreation.Size = new System.Drawing.Size(159, 17);
-            this.chkOpenAfterCreation.TabIndex = 9;
+            this.chkOpenAfterCreation.TabIndex = 4;
             this.chkOpenAfterCreation.Text = "Open Image after Uploading";
             this.chkOpenAfterCreation.UseVisualStyleBackColor = true;
             // 
