@@ -75,7 +75,7 @@ namespace serwmImageUploader.Classes
             try
             {
                 //Creating a new Bitmap object
-                Bitmap captureBitmap = new Bitmap(rect.Width + 1920, rect.Height, PixelFormat.Format32bppArgb);
+                Bitmap captureBitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
                 //Bitmap captureBitmap = new Bitmap(int width, int height, PixelFormat);
                 //Creating a Rectangle object which will  
                 //capture our Current Screen
