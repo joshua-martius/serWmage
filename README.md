@@ -1,7 +1,7 @@
 # serWmage
 Takes screenshots, uploads them via sftp and saves the link in your clipboard
 
-## Default Hotkeys
+## Default Hotkeys (Windows)
 These are the default hotkeys. It is already planned to make them customizable.
 - CTRL+R: Takes Fullscreen Screenshot
 - F2: Opens window for a cropped screenshot
