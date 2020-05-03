@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,7 +17,14 @@ namespace serwmImageUploader
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            if (!(Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1))
+            {
+                // prevent multiple instances
+                Application.Run(new frmMain());
+            }
+            else MessageBox.Show("Only one instance at the time possible!","Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            
         }
     }
 }
