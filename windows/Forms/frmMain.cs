@@ -58,6 +58,7 @@ namespace serwmImageUploader
             HK.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK_trigger);
             HK.AddHotKey(Keys.R, HotKey.MODKEY.MOD_CONTROL, "CTRL-R");
             HK.AddHotKey(Keys.F2, HotKey.MODKEY.MOD_NONE, "F2");
+            HK.AddHotKey(Keys.Pause, HotKey.MODKEY.MOD_SHIFT, "SHIFT-BREAK");
             HK.AddHotKey(Keys.Pause, HotKey.MODKEY.MOD_NONE, "BREAK");
             return true;
         }
@@ -79,6 +80,9 @@ namespace serwmImageUploader
                     drawer.Show();
                     break;
                 case "BREAK":
+                    this.Show();
+                    break;
+                case "SHIFT-BREAK":
                     Console.Beep();
                     Console.Beep();
                     Application.Exit();
