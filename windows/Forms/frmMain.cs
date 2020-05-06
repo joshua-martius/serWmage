@@ -105,7 +105,11 @@ namespace serwmImageUploader
         private void btnOpenConfiguration_Click(object sender, EventArgs e)
         {
             frmConfigwizard frm = new frmConfigwizard(_web.Config);
-            frm.Show();
+            DialogResult result = frm.ShowDialog();
+            if(result.Equals(DialogResult.OK))
+            {
+                _web.Config = frm.Config;
+            }
         }
     }
 }
