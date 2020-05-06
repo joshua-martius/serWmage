@@ -10,7 +10,7 @@ namespace serwmImageUploader.Classes
 {
     public class WebHandler
     {
-        private const string _baseString = "ABCDEFGHIJKLMNOPQ_RSTUVXYZabc-,defghijklmnopqrstuvwxyz0123456789";
+        private const string _baseString = "ABCDEFGHIJKLMNOPQ_RSTUVXYZabc,defghijklmnopqrstuvwxyz0123456789";
         private Configuration _config = null;
 
         /// <summary>
@@ -53,13 +53,13 @@ namespace serwmImageUploader.Classes
                     do
                     {
                         imgID = this.generateID();
-                        filename = imgID + ".png";
+                        filename = "." + imgID + ".png";
                     } while (!(files.TrueForAll(f => !f.Name.Equals(filename))));
                     
                     using (var fileStream = new FileStream(filepath, FileMode.Open))
                     {
                         sftp.BufferSize = 4096;
-                        string remotePath = string.Format("{0}/{1}.png", _config.RemoteDirectory, imgID);
+                        string remotePath = string.Format("{0}/{1}", _config.RemoteDirectory, filename);
                         sftp.UploadFile(fileStream, remotePath);
                     }
 
@@ -70,7 +70,7 @@ namespace serwmImageUploader.Classes
                 }
             }
             File.Delete(filepath);
-            return string.Format("https://{0}/{1}.png", _config.Address, imgID);
+            return string.Format("https://{0}/.{1}.png", _config.Address, imgID);
         }
 
         /// <summary>
