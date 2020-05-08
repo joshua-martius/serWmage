@@ -52,7 +52,7 @@ namespace serwmImageUploader.Classes
                     string filename = string.Empty;
                     do
                     {
-                        imgID = this.generateID();
+                        imgID = this.generateID(15);
                         filename = "." + imgID + ".png";
                     } while (!(files.TrueForAll(f => !f.Name.Equals(filename))));
                     

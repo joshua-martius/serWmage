@@ -35,7 +35,7 @@ namespace serwmImageUploader
         private static string Filepath { get => string.Format("{0}\\config.ini", System.Windows.Forms.Application.StartupPath); }
 
         /// <summary>
-        /// The directory to the images on the remote Imageserver.
+        /// The directory of the images on the remote Imageserver.
         /// </summary>
         public string RemoteDirectory { get => _config[3]; set => _config[3] = value; }
 

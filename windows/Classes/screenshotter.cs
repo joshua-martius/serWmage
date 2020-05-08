@@ -72,36 +72,28 @@ namespace serwmImageUploader.Classes
         /// <returns></returns>
         public static string TakeScreenshot(string filepath, Rectangle rect)
         {
-            try
-            {
-                //Creating a new Bitmap object
-                Bitmap captureBitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
-                //Creating a Rectangle object which will  
-                //capture our Current Screen
-                Rectangle captureRectangle = rect;
-                //Creating a New Graphics Object
-                Graphics captureGraphics = Graphics.FromImage(captureBitmap);
-                //Copying Image from The Screen
+            if (rect.Width == 0 || rect.Height == 0) throw new Exception("Invalid boundaries!");
+            //Creating a new Bitmap object
+            Bitmap captureBitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
+            //Creating a Rectangle object which will  
+            //capture our Current Screen
+            Rectangle captureRectangle = rect;
+            //Creating a New Graphics Object
+            Graphics captureGraphics = Graphics.FromImage(captureBitmap);
+            //Copying Image from The Screen
 
-                int left = 0;
-                int top = 0;
+            int left = 0;
+            int top = 0;
 
-                left = captureRectangle.Left;
-                top = captureRectangle.Top;
+            left = captureRectangle.Left;
+            top = captureRectangle.Top;
                 
-                captureGraphics.CopyFromScreen(left - 1920, top, 0, 0, captureRectangle.Size);
+            captureGraphics.CopyFromScreen(left - 1920, top, 0, 0, captureRectangle.Size);
                 
-                //Saving the Image File
-                filepath = string.Format("{0}\\tmp.png", filepath);
-                captureBitmap.Save(filepath, ImageFormat.Png);
-                return filepath;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            //Saving the Image File
+            filepath = string.Format("{0}\\tmp.png", filepath);
+            captureBitmap.Save(filepath, ImageFormat.Png);
+            return filepath;
         }
-
-
     }
 }
