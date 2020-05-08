@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnHide = new System.Windows.Forms.Button();
             this.btnOpenConfiguration = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -38,7 +39,7 @@
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(139, 45);
             this.btnHide.TabIndex = 0;
-            this.btnHide.Text = "Minimize";
+            this.btnHide.Text = "Move to Background";
             this.btnHide.UseVisualStyleBackColor = true;
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
@@ -60,13 +61,12 @@
             this.Controls.Add(this.btnOpenConfiguration);
             this.Controls.Add(this.btnHide);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMain";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "serWmImageUploader";
+            this.Text = "serWmage";
             this.ResumeLayout(false);
 
         }

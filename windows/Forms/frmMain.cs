@@ -30,12 +30,19 @@ namespace serwmImageUploader
 
         private void Drawer_FormClosed(object sender, FormClosedEventArgs e)
         {
-            Form send = (Form)sender;
-            if (send.DialogResult == DialogResult.Cancel) return;
-            string link = _web.UploadScreenshot(Application.StartupPath + "\\tmp.png");
-            this.CopyLinkToClipboard(link);
-            if (_web.Config.OpenImageAfterUpload) Process.Start(link);
-            Console.Beep();
+            try
+            {
+                Form send = (Form)sender;
+                if (send.DialogResult == DialogResult.Cancel) return;
+                string link = _web.UploadScreenshot(Application.StartupPath + "\\tmp.png");
+                this.CopyLinkToClipboard(link);
+                if (_web.Config.OpenImageAfterUpload && link != null) Process.Start(link);
+                Console.Beep();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private bool InitializeConfiguration()
@@ -94,7 +101,7 @@ namespace serwmImageUploader
 
         private void CopyLinkToClipboard(string link)
         {
-            Clipboard.SetText(link);
+            if(link != null) Clipboard.SetText(link);
         }       
 
         private void btnHide_Click(object sender, EventArgs e)

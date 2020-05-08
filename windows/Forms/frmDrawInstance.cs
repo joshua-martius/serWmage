@@ -39,7 +39,7 @@ namespace serwmImageUploader.Forms
 
         private void frmDrawInstance_MouseMove(object sender, MouseEventArgs e)
         {
-            Console.WriteLine(string.Format("({0}|{1})", e.X, e.Y));
+            //Console.WriteLine(string.Format("({0}|{1})", e.X, e.Y));
             if(_isSet)
             {
                 _rect.X =       Math.Min(e.X, _initial[0]);

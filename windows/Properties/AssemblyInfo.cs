@@ -6,8 +6,8 @@ using System.Runtime.InteropServices;
 // Allgemeine Informationen über eine Assembly werden über die folgenden
 // Attribute gesteuert. Ändern Sie diese Attributwerte, um die Informationen zu ändern,
 // die einer Assembly zugeordnet sind.
-[assembly: AssemblyTitle("serwmImageUploader")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("serWmage")]
+[assembly: AssemblyDescription("serWm Image Uploader")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("serWm")]
 [assembly: AssemblyProduct("serwmImageUploader")]
