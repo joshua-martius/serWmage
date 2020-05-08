@@ -30,7 +30,8 @@ namespace serwmImageUploader.Forms
             this.Size = new Size(width, height);
 
             //this.CenterToScreen();
-            this.Left = -1920;
+            if (Screen.AllScreens.Count() == 1) this.Left = 0;
+            else this.Left = -1920;
             this.Top = 0;
 
             _drawPen = new Pen(_brush, 2);
