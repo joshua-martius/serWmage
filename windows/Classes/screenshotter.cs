@@ -82,14 +82,12 @@ namespace serwmImageUploader.Classes
             Graphics captureGraphics = Graphics.FromImage(captureBitmap);
             //Copying Image from The Screen
 
-            int left = 0;
-            int top = 0;
+            int left = captureRectangle.Left;
+            int top = captureRectangle.Top;
 
-            left = captureRectangle.Left;
-            top = captureRectangle.Top;
-                
-            captureGraphics.CopyFromScreen(left - 1920, top, 0, 0, captureRectangle.Size);
-                
+            if(Screen.AllScreens.Count() == 1) captureGraphics.CopyFromScreen(left, top, 0, 0, captureRectangle.Size);
+            else captureGraphics.CopyFromScreen(left - 1920, top, 0, 0, captureRectangle.Size);
+
             //Saving the Image File
             filepath = string.Format("{0}\\tmp.png", filepath);
             captureBitmap.Save(filepath, ImageFormat.Png);
