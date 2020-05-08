@@ -66,6 +66,7 @@ namespace serwmImageUploader.Classes
                 }
                 catch (Exception ex)
                 {
+                    Crashlogger.Write(ex);
                     throw ex;
                 }
             }

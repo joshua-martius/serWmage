@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using serwmImageUploader.Classes;
 
 namespace serwmImageUploader
 {
@@ -64,7 +65,12 @@ namespace serwmImageUploader
             {
                 Configuration config = new Configuration();
                 config._config = File.ReadAllLines(Configuration.Filepath);
-                if (config._config.Length != CONFIG_AMOUNT) throw new Exception("Incomplete configuration!\nDelete your configuration file and create a new one.");
+                if (config._config.Length != CONFIG_AMOUNT)
+                {
+                    Exception ex = new Exception("Incomplete configuration!\nDelete your configuration file and create a new one.");
+                    Crashlogger.Write(ex);
+                    throw ex;
+                }
                 return config;
             }
             catch (Exception ex)

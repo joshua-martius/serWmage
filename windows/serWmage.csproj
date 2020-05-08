@@ -71,6 +71,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\Configuration.cs" />
+    <Compile Include="Classes\Crashlogger.cs" />
     <Compile Include="Classes\Screenshotter.cs" />
     <Compile Include="Classes\WebHandler.cs" />
     <Compile Include="Forms\frmConfigwizard.cs">

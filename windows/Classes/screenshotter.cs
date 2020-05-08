@@ -60,6 +60,7 @@ namespace serwmImageUploader.Classes
             }
             catch (Exception ex)
             {
+                Crashlogger.Write(ex);
                 throw ex;
             }
         }
@@ -72,7 +73,12 @@ namespace serwmImageUploader.Classes
         /// <returns></returns>
         public static string TakeScreenshot(string filepath, Rectangle rect)
         {
-            if (rect.Width == 0 || rect.Height == 0) throw new Exception("Invalid boundaries!");
+            if (rect.Width == 0 || rect.Height == 0)
+            {
+                Exception ex = new Exception("Zero boundaries!");
+                Crashlogger.Write(ex);
+                throw ex;
+            }
             //Creating a new Bitmap object
             Bitmap captureBitmap = new Bitmap(rect.Width, rect.Height, PixelFormat.Format32bppArgb);
             //Creating a Rectangle object which will  
