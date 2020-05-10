@@ -23,16 +23,14 @@ namespace serwmImageUploader.Forms
         public frmDrawInstance()
         {
             InitializeComponent();
-            this.Size = Screen.FromPoint(Cursor.Position).Bounds.Size;
             int width = Screen.AllScreens.ToList().Sum(scr => scr.Bounds.Width);
             int height = Screen.AllScreens.ToList().Max(scr => scr.Bounds.Height);
             this.StartPosition = FormStartPosition.Manual;
             this.Size = new Size(width, height);
 
-            //this.CenterToScreen();
+            this.Top = 0;
             if (Screen.AllScreens.Count() == 1) this.Left = 0;
             else this.Left = -1920;
-            this.Top = 0;
 
             _drawPen = new Pen(_brush, 2);
             formGraphics = this.CreateGraphics();
@@ -40,7 +38,6 @@ namespace serwmImageUploader.Forms
 
         private void frmDrawInstance_MouseMove(object sender, MouseEventArgs e)
         {
-            //Console.WriteLine(string.Format("({0}|{1})", e.X, e.Y));
             if(_isSet)
             {
                 _rect.X =       Math.Min(e.X, _initial[0]);
