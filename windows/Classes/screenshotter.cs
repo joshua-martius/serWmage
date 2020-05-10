@@ -44,16 +44,16 @@ namespace serwmImageUploader.Classes
             {
                 //Creating a new Bitmap object
                 Bitmap captureBitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
-                //Bitmap captureBitmap = new Bitmap(int width, int height, PixelFormat);
-                //Creating a Rectangle object which will  
-                //capture our Current Screen
+                
                 Rectangle captureRectangle = Screen.FromPoint(Cursor.Position).Bounds;
+                
                 //Creating a New Graphics Object
                 Graphics captureGraphics = Graphics.FromImage(captureBitmap);
+                
                 //Copying Image from The Screen
                 captureGraphics.CopyFromScreen(captureRectangle.Left, captureRectangle.Top, 0, 0, captureRectangle.Size);
+                
                 //Saving the Image File
-
                 filepath = string.Format("{0}\\tmp.png", filepath);
                 captureBitmap.Save(filepath, ImageFormat.Png);
                 return filepath;
@@ -86,8 +86,7 @@ namespace serwmImageUploader.Classes
             Rectangle captureRectangle = rect;
             //Creating a New Graphics Object
             Graphics captureGraphics = Graphics.FromImage(captureBitmap);
-            //Copying Image from The Screen
-
+            
             int left = captureRectangle.Left;
             int top = captureRectangle.Top;
 

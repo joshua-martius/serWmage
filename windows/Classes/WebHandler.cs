@@ -10,7 +10,7 @@ namespace serwmImageUploader.Classes
 {
     public class WebHandler
     {
-        private const string _baseString = "ABCDEFGHIJKLMNOPQ_RSTUVXYZabc,defghijklmnopqrstuvwxyz0123456789";
+        private const string _baseString = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvwxyz0123456789";
         private Configuration _config = null;
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace serwmImageUploader.Classes
                     string filename = string.Empty;
                     do
                     {
-                        imgID = this.generateID(15);
+                        imgID = this.generateID(16);
                         filename = "." + imgID + ".png";
                     } while (!(files.TrueForAll(f => !f.Name.Equals(filename))));
                     
