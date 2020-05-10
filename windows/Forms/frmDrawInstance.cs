@@ -16,13 +16,18 @@ namespace serwmImageUploader.Forms
         private int[] _initial = new int[2];
         private bool _isSet = false;
         private System.Drawing.Graphics formGraphics = null;
-        private Brush _brush = new SolidBrush(Color.FromArgb(255, 16, 16, 16));
+        //private Brush _brush = new SolidBrush(Color.FromArgb(255, 255, 0, 0));
+        private Brush _brush = new SolidBrush(Color.Black);
+        private Color _background = Color.LightGray;
         private Pen _drawPen = null;
         private Rectangle _rect = new Rectangle();
+        private frmMain _frmMain = null;
 
-        public frmDrawInstance()
+        public frmDrawInstance(frmMain frmMain)
         {
             InitializeComponent();
+            _frmMain = frmMain;
+            this.BackColor = _background;
             int width = Screen.AllScreens.ToList().Sum(scr => scr.Bounds.Width);
             int height = Screen.AllScreens.ToList().Max(scr => scr.Bounds.Height);
             int leftshift = Screen.AllScreens.ToList().Min(scr => scr.Bounds.Width);
@@ -34,7 +39,7 @@ namespace serwmImageUploader.Forms
             if(Screen.AllScreens.Count() == 1) this.Left = 0;
             else this.Left = -leftshift;
 
-            _drawPen = new Pen(_brush, 2);
+            _drawPen = new Pen(_brush, 8);
             formGraphics = this.CreateGraphics();
         }
 
@@ -46,6 +51,7 @@ namespace serwmImageUploader.Forms
                 _rect.Y =       Math.Min(e.Y, _initial[1]);
                 _rect.Width =   Math.Abs(e.X - _initial[0]);
                 _rect.Height =  Math.Abs(e.Y - _initial[1]);
+                formGraphics.Clear(_background);
                 formGraphics.DrawRectangle(_drawPen, _rect);
             }
         }
@@ -66,6 +72,7 @@ namespace serwmImageUploader.Forms
                 Cursor.Current = Cursors.Default;
                 this.Hide(); // prevent the form from being visible on the screenshot
                 Screenshotter.TakeScreenshot(Application.StartupPath, _rect);
+                this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             else if(e.Button.Equals(MouseButtons.Right))

@@ -21,6 +21,8 @@ namespace serwmImageUploader
     public partial class frmMain : Form
     {
         private WebHandler _web = null;
+        private bool _openCropping = false;
+
 
         public frmMain()
         {
@@ -30,6 +32,7 @@ namespace serwmImageUploader
 
         private void Drawer_FormClosed(object sender, FormClosedEventArgs e)
         {
+            _openCropping = false;
             try
             {
                 Form send = (Form)sender;
@@ -83,9 +86,13 @@ namespace serwmImageUploader
                     Console.Beep();
                     break;
                 case "F2":
-                    frmDrawInstance drawer = new frmDrawInstance();
-                    drawer.FormClosed += this.Drawer_FormClosed;
-                    drawer.Show();
+                    if(!_openCropping)
+                    {
+                        frmDrawInstance drawer = new frmDrawInstance(this);
+                        drawer.FormClosed += this.Drawer_FormClosed;
+                        _openCropping = true;
+                        drawer.ShowDialog();
+                    }
                     break;
                 case "BREAK":
                     this.Show();
