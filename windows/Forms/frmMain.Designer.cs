@@ -31,11 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.btnHide = new System.Windows.Forms.Button();
             this.btnOpenConfiguration = new System.Windows.Forms.Button();
+            this.btnShowCrashfile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnHide
             // 
-            this.btnHide.Location = new System.Drawing.Point(12, 63);
+            this.btnHide.Location = new System.Drawing.Point(12, 114);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(139, 45);
             this.btnHide.TabIndex = 0;
@@ -53,11 +54,22 @@
             this.btnOpenConfiguration.UseVisualStyleBackColor = true;
             this.btnOpenConfiguration.Click += new System.EventHandler(this.btnOpenConfiguration_Click);
             // 
+            // btnShowCrashfile
+            // 
+            this.btnShowCrashfile.Location = new System.Drawing.Point(12, 63);
+            this.btnShowCrashfile.Name = "btnShowCrashfile";
+            this.btnShowCrashfile.Size = new System.Drawing.Size(139, 45);
+            this.btnShowCrashfile.TabIndex = 2;
+            this.btnShowCrashfile.Text = "Show Crashfile";
+            this.btnShowCrashfile.UseVisualStyleBackColor = true;
+            this.btnShowCrashfile.Click += new System.EventHandler(this.btnShowCrashfile_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(163, 118);
+            this.ClientSize = new System.Drawing.Size(163, 171);
+            this.Controls.Add(this.btnShowCrashfile);
             this.Controls.Add(this.btnOpenConfiguration);
             this.Controls.Add(this.btnHide);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -75,6 +87,7 @@
 
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Button btnOpenConfiguration;
+        private System.Windows.Forms.Button btnShowCrashfile;
     }
 }
 
