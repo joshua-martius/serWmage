@@ -25,12 +25,14 @@ namespace serwmImageUploader.Forms
             InitializeComponent();
             int width = Screen.AllScreens.ToList().Sum(scr => scr.Bounds.Width);
             int height = Screen.AllScreens.ToList().Max(scr => scr.Bounds.Height);
+            int leftshift = Screen.AllScreens.ToList().Min(scr => scr.Bounds.Width);
+
             this.StartPosition = FormStartPosition.Manual;
             this.Size = new Size(width, height);
 
             this.Top = 0;
-            if (Screen.AllScreens.Count() == 1) this.Left = 0;
-            else this.Left = -1920;
+            if(Screen.AllScreens.Count() == 1) this.Left = 0;
+            else this.Left = -leftshift;
 
             _drawPen = new Pen(_brush, 2);
             formGraphics = this.CreateGraphics();
