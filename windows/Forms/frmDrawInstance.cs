@@ -50,7 +50,6 @@ namespace serwmImageUploader.Forms
 
         private void frmDrawInstance_MouseDown(object sender, MouseEventArgs e)
         {
-            
             _initial[0] = e.X;
             _initial[1] = e.Y;
             _isSet = true;            
