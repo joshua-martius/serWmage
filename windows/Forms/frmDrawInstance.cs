@@ -21,12 +21,10 @@ namespace serwmImageUploader.Forms
         private Color _background = Color.LightGray;
         private Pen _drawPen = null;
         private Rectangle _rect = new Rectangle();
-        private frmMain _frmMain = null;
 
-        public frmDrawInstance(frmMain frmMain)
+        public frmDrawInstance()
         {
             InitializeComponent();
-            _frmMain = frmMain;
             this.BackColor = _background;
             int width = Screen.AllScreens.ToList().Sum(scr => scr.Bounds.Width);
             int height = Screen.AllScreens.ToList().Max(scr => scr.Bounds.Height);

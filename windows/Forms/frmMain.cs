@@ -88,7 +88,7 @@ namespace serwmImageUploader
                 case "F2":
                     if(!_openCropping)
                     {
-                        frmDrawInstance drawer = new frmDrawInstance(this);
+                        frmDrawInstance drawer = new frmDrawInstance();
                         drawer.FormClosed += this.Drawer_FormClosed;
                         _openCropping = true;
                         drawer.ShowDialog();
