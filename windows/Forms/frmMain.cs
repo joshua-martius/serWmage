@@ -28,6 +28,7 @@ namespace serwmImageUploader
         {
             InitializeComponent();
             if (!InitializeConfiguration()) Environment.Exit(0);
+            this.Text += " V" + Application.ProductVersion;
         }
 
         private void Drawer_FormClosed(object sender, FormClosedEventArgs e)
