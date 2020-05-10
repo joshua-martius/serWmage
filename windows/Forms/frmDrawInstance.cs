@@ -52,6 +52,7 @@ namespace serwmImageUploader.Forms
 
         private void frmDrawInstance_MouseDown(object sender, MouseEventArgs e)
         {
+            
             _initial[0] = e.X;
             _initial[1] = e.Y;
             _isSet = true;            
@@ -60,11 +61,19 @@ namespace serwmImageUploader.Forms
 
         private void frmDrawInstance_MouseUp(object sender, MouseEventArgs e)
         {
-            _isSet = false;
-            Cursor.Current = Cursors.Default;
-            this.Hide(); // prevent the form from being visible on the screenshot
-            Screenshotter.TakeScreenshot(Application.StartupPath, _rect);
-            this.Close();
+            if(e.Button.Equals(MouseButtons.Left))
+            {
+                _isSet = false;
+                Cursor.Current = Cursors.Default;
+                this.Hide(); // prevent the form from being visible on the screenshot
+                Screenshotter.TakeScreenshot(Application.StartupPath, _rect);
+                this.Close();
+            }
+            else if(e.Button.Equals(MouseButtons.Right))
+            {
+                this.DialogResult = DialogResult.Cancel;
+                this.Close();
+            }
         }
 
         private void frmDrawInstance_KeyDown(object sender, KeyEventArgs e)

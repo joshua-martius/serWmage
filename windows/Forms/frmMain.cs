@@ -118,5 +118,10 @@ namespace serwmImageUploader
                 _web.Config = frm.Config;
             }
         }
+
+        private void btnShowCrashfile_Click(object sender, EventArgs e)
+        {
+            Process.Start(Crashlogger.Filepath);
+        }
     }
 }

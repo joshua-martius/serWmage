@@ -12,13 +12,14 @@ namespace serwmImageUploader.Classes
     {
         private static string _filepath = string.Format("{0}/crashes.log", Application.StartupPath);
 
+        public static string Filepath { get => _filepath; }
         public static void Write(Exception exception, bool includeTimestamp = true) => Crashlogger.Write(exception.Message, includeTimestamp);
         
         public static void Write(string message, bool includeTimestamp = true)
         {
             string output = string.Empty;
             if (includeTimestamp) output = Crashlogger.getTimestamp() + ": ";
-            output += message;
+            output += message + "\n";
             File.AppendAllText(_filepath, output);
         }
 
