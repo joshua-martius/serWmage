@@ -129,7 +129,15 @@ namespace serwmImageUploader
 
         private void btnShowCrashfile_Click(object sender, EventArgs e)
         {
-            Process.Start(Crashlogger.Filepath);
+            try
+            {
+                frmCrashlog frm = new frmCrashlog();
+                frm.ShowDialog();
+            }
+            catch(Exception ex)
+            {
+                Crashlogger.Write(ex.Message);
+            }
         }
     }
 }
