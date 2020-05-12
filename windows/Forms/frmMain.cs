@@ -22,13 +22,33 @@ namespace serwmImageUploader
     {
         private WebHandler _web = null;
         private bool _openCropping = false;
-
-
+        
         public frmMain()
         {
             InitializeComponent();
             if (!InitializeConfiguration()) Environment.Exit(0);
             this.Text += " V" + Application.ProductVersion;
+            this.grpDragNDrop.AllowDrop = true;
+            this.grpDragNDrop.DragEnter += this.GrpDragNDrop_DragEnter;
+            this.grpDragNDrop.DragDrop += this.GrpDragNDrop_DragDrop;
+
+        }
+
+        private void GrpDragNDrop_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] filearray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            string filepath = filearray[0];
+            string link = _web.UploadScreenshot(filepath, false);
+            this.CopyLinkToClipboard(link);
+            Console.Beep();
+        }
+
+        private void GrpDragNDrop_DragEnter(object sender, DragEventArgs e)
+        {
+            string[] filearray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            List<string> filelist = filearray.ToList();
+            if (!filelist.TrueForAll(str => str.EndsWith(".png"))) return;
+            else e.Effect = DragDropEffects.Copy;
         }
 
         private void Drawer_FormClosed(object sender, FormClosedEventArgs e)
@@ -137,6 +157,20 @@ namespace serwmImageUploader
             catch(Exception ex)
             {
                 Crashlogger.Write(ex.Message);
+            }
+        }
+
+        private void btnUploadCustom_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Filter = "Images|*.png";
+            dlg.Title = "Open Image for uploading to " + _web.Config.Address;
+            if(dlg.ShowDialog().Equals(DialogResult.OK))
+            {
+                string filepath = dlg.FileName;
+                string link = _web.UploadScreenshot(filepath, false);
+                this.CopyLinkToClipboard(link);
+                Console.Beep();
             }
         }
     }

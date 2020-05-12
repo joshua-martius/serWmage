@@ -32,6 +32,8 @@
             this.btnHide = new System.Windows.Forms.Button();
             this.btnOpenConfiguration = new System.Windows.Forms.Button();
             this.btnShowCrashfile = new System.Windows.Forms.Button();
+            this.btnUploadCustom = new System.Windows.Forms.Button();
+            this.grpDragNDrop = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // btnHide
@@ -39,17 +41,17 @@
             this.btnHide.Location = new System.Drawing.Point(12, 114);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(139, 45);
-            this.btnHide.TabIndex = 0;
+            this.btnHide.TabIndex = 2;
             this.btnHide.Text = "Move to Background";
             this.btnHide.UseVisualStyleBackColor = true;
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
             // btnOpenConfiguration
             // 
-            this.btnOpenConfiguration.Location = new System.Drawing.Point(12, 12);
+            this.btnOpenConfiguration.Location = new System.Drawing.Point(157, 12);
             this.btnOpenConfiguration.Name = "btnOpenConfiguration";
             this.btnOpenConfiguration.Size = new System.Drawing.Size(139, 45);
-            this.btnOpenConfiguration.TabIndex = 1;
+            this.btnOpenConfiguration.TabIndex = 3;
             this.btnOpenConfiguration.Text = "Open Configuration";
             this.btnOpenConfiguration.UseVisualStyleBackColor = true;
             this.btnOpenConfiguration.Click += new System.EventHandler(this.btnOpenConfiguration_Click);
@@ -59,16 +61,37 @@
             this.btnShowCrashfile.Location = new System.Drawing.Point(12, 63);
             this.btnShowCrashfile.Name = "btnShowCrashfile";
             this.btnShowCrashfile.Size = new System.Drawing.Size(139, 45);
-            this.btnShowCrashfile.TabIndex = 2;
+            this.btnShowCrashfile.TabIndex = 1;
             this.btnShowCrashfile.Text = "Show Crashfile";
             this.btnShowCrashfile.UseVisualStyleBackColor = true;
             this.btnShowCrashfile.Click += new System.EventHandler(this.btnShowCrashfile_Click);
+            // 
+            // btnUploadCustom
+            // 
+            this.btnUploadCustom.Location = new System.Drawing.Point(12, 12);
+            this.btnUploadCustom.Name = "btnUploadCustom";
+            this.btnUploadCustom.Size = new System.Drawing.Size(139, 45);
+            this.btnUploadCustom.TabIndex = 0;
+            this.btnUploadCustom.Text = "Upload own Image";
+            this.btnUploadCustom.UseVisualStyleBackColor = true;
+            this.btnUploadCustom.Click += new System.EventHandler(this.btnUploadCustom_Click);
+            // 
+            // grpDragNDrop
+            // 
+            this.grpDragNDrop.Location = new System.Drawing.Point(157, 63);
+            this.grpDragNDrop.Name = "grpDragNDrop";
+            this.grpDragNDrop.Size = new System.Drawing.Size(136, 96);
+            this.grpDragNDrop.TabIndex = 4;
+            this.grpDragNDrop.TabStop = false;
+            this.grpDragNDrop.Text = "Drag and Drop Box";
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(163, 171);
+            this.ClientSize = new System.Drawing.Size(305, 171);
+            this.Controls.Add(this.grpDragNDrop);
+            this.Controls.Add(this.btnUploadCustom);
             this.Controls.Add(this.btnShowCrashfile);
             this.Controls.Add(this.btnOpenConfiguration);
             this.Controls.Add(this.btnHide);
@@ -88,6 +111,8 @@
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Button btnOpenConfiguration;
         private System.Windows.Forms.Button btnShowCrashfile;
+        private System.Windows.Forms.Button btnUploadCustom;
+        private System.Windows.Forms.GroupBox grpDragNDrop;
     }
 }
 

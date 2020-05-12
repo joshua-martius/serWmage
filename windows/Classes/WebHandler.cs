@@ -37,7 +37,7 @@ namespace serwmImageUploader.Classes
         /// </summary>
         /// <param name="filepath">The local filepath to the screenshot which shall be uploaded.</param>
         /// <returns>The URL to the image on the remote imageserver.</returns>
-        public string UploadScreenshot(string filepath)
+        public string UploadScreenshot(string filepath, bool deleteAfterUpload = true)
         {
             string imgID = string.Empty;
             using (SftpClient sftp = new SftpClient(_config.Address, _config.Username, _config.Password))
@@ -70,7 +70,7 @@ namespace serwmImageUploader.Classes
                     throw ex;
                 }
             }
-            File.Delete(filepath);
+            if(deleteAfterUpload) File.Delete(filepath);
             return string.Format("https://{0}/.{1}.png", _config.Address, imgID);
         }
 
