@@ -169,10 +169,7 @@ namespace serwmImageUploader
                 frmCrashlog frm = new frmCrashlog();
                 frm.ShowDialog();
             }
-            catch(Exception ex)
-            {
-                Crashlogger.Write(ex.Message);
-            }
+            catch{}
         }
 
         private void btnUploadCustom_Click(object sender, EventArgs e)
