@@ -34,6 +34,21 @@ namespace serwmImageUploader
 
         }
 
+        public frmMain(List<string> args) : this()
+        {
+            if(args.Count.Equals(1))
+            {
+                if(File.Exists(args[0]) && args[0].EndsWith(".png"))
+                {
+                    string filepath = args[0];
+                    string link = _web.UploadScreenshot(filepath, false);
+                    this.CopyLinkToClipboard(link);
+                    Console.Beep();
+                    this.Close();
+                }
+            }
+        }
+
         private void GrpDragNDrop_DragDrop(object sender, DragEventArgs e)
         {
             string[] filearray = (string[])e.Data.GetData(DataFormats.FileDrop, false);

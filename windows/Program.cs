@@ -13,14 +13,14 @@ namespace serwmImageUploader
         /// Der Haupteinstiegspunkt für die Anwendung.
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if (!(Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1))
+            if (!(Process.GetProcessesByName(Process.GetCurrentProcess().ProcessName).Length > 1) || args.Count() == 1)
             {
-                // prevent multiple instances
-                Application.Run(new frmMain());
+                // prevent multiple instances, except if command line arguments were used
+                Application.Run(new frmMain(args.ToList()));
             }
             else MessageBox.Show("Only one instance at the time possible!","Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 

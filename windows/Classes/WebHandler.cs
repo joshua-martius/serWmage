@@ -47,6 +47,7 @@ namespace serwmImageUploader.Classes
                     sftp.Connect();
                     sftp.ChangeDirectory(_config.RemoteDirectory);
                     var files = sftp.ListDirectory(_config.RemoteDirectory).ToList();
+                    files.RemoveAll(f => !f.Name.EndsWith(".png"));
 
                     // ** Duplicate Check
                     string filename = string.Empty;
