@@ -53,7 +53,7 @@ namespace serwmImageUploader.Classes
                     string filename = string.Empty;
                     do
                     {
-                        imgID = this.generateID(16);
+                        imgID = this.generateID(32);
                         filename = "." + imgID + ".png";
                     } while (!(files.TrueForAll(f => !f.Name.Equals(filename))));
                     
@@ -72,7 +72,7 @@ namespace serwmImageUploader.Classes
                 }
             }
             if(deleteAfterUpload) File.Delete(filepath);
-            return string.Format("https://{0}/.{1}.png", _config.Address, imgID);
+            return string.Format("https://{0}/{1}.png", _config.Address, imgID);
         }
 
         /// <summary>
