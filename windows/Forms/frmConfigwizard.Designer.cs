@@ -83,7 +83,7 @@
             this.lblServeraddress.Name = "lblServeraddress";
             this.lblServeraddress.Size = new System.Drawing.Size(78, 13);
             this.lblServeraddress.TabIndex = 3;
-            this.lblServeraddress.Text = "Serveradresse:";
+            this.lblServeraddress.Text = "Serveraddress:";
             // 
             // label1
             // 

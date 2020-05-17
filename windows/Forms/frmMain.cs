@@ -175,7 +175,7 @@ namespace serwmImageUploader
         private void btnUploadCustom_Click(object sender, EventArgs e)
         {
             OpenFileDialog dlg = new OpenFileDialog();
-            dlg.Filter = "Images|*.png";
+            dlg.Filter = "PNG-Images|*.png";
             dlg.Title = "Open Image for uploading to " + _web.Config.Address;
             if(dlg.ShowDialog().Equals(DialogResult.OK))
             {
