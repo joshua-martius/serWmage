@@ -25,6 +25,8 @@ namespace serwmImageUploader
             this.tbxPassword.Text = config.Password;
             this.tbxRemoteDirectory.Text = config.RemoteDirectory;
             this.tbxServerAddress.Text = config.Address;
+            radUseSSHKey.Checked = config.UseKeyFile;
+            if (config.UseKeyFile) tbxKeyFilePath.Text = config.PathToKeyFile;
             this.chkOpenAfterCreation.Checked = Convert.ToBoolean(config.OpenImageAfterUpload);
         }
 
@@ -47,6 +49,8 @@ namespace serwmImageUploader
                 _config.Address = tbxServerAddress.Text;
                 _config.RemoteDirectory = tbxRemoteDirectory.Text;
                 _config.OpenImageAfterUpload = chkOpenAfterCreation.Checked;
+                _config.UseKeyFile = radUseSSHKey.Checked;
+                if (_config.UseKeyFile) _config.PathToKeyFile = tbxKeyFilePath.Text;
                 _config.Save();
                 this.DialogResult = DialogResult.OK;
                 this.Close();
@@ -54,6 +58,28 @@ namespace serwmImageUploader
             else
             {
                 MessageBox.Show("Missing or wrong configuration details!","Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void radUseSSHKey_CheckedChanged(object sender, EventArgs e)
+        {
+            tbxPassword.Clear();
+            tbxKeyFilePath.Visible = radUseSSHKey.Checked;
+            btnBrowseKeyFile.Visible = radUseSSHKey.Checked;
+
+            tbxPassword.Visible = radUsePassword.Checked;
+
+            if (tbxPassword.Visible) lblPassword.Text = "Password: ";
+            else lblPassword.Text = "SSH-File:";
+        }
+
+        private void btnBrowseKeyFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.Title = string.Format("Select SSH-Keyfile for {0}@{1}", tbxUsername.Text, tbxServerAddress.Text);
+            if(dlg.ShowDialog().Equals(DialogResult.OK))
+            {
+                tbxKeyFilePath.Text = dlg.FileName;
             }
         }
     }

@@ -11,10 +11,25 @@ namespace serwmImageUploader
 {
     public class Configuration
     {
-        private const int CONFIG_AMOUNT = 5;
+        private const int CONFIG_AMOUNT = 7;
 
         private string[] _config = new string[CONFIG_AMOUNT];
        
+        public string PathToKeyFile 
+        {
+            get => _config[6];
+            set
+            {
+                if (!UseKeyFile) throw new Exception("UseKeyFile not set!");
+                else _config[6] = value;
+            }
+        }
+
+        /// <summary>
+        /// Indicates wether password login or key file login shall be used.
+        /// </summary>
+        public bool UseKeyFile { get => Convert.ToBoolean(_config[5]); set => _config[5] = value.ToString(); }
+
         /// <summary>
         /// The Imageserver's address.
         /// </summary>
@@ -33,7 +48,7 @@ namespace serwmImageUploader
         /// <summary>
         /// The full filepath of the configuration file.
         /// </summary>
-        private static string Filepath { get => string.Format("{0}\\config.ini", System.Windows.Forms.Application.StartupPath); }
+        private static string Filepath { get => string.Format("{0}\\config.ini", Application.StartupPath); }
 
         /// <summary>
         /// The directory of the images on the remote Imageserver.

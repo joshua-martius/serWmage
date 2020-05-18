@@ -40,37 +40,42 @@ namespace serwmImageUploader.Classes
         public string UploadScreenshot(string filepath, bool deleteAfterUpload = true)
         {
             string imgID = string.Empty;
-            using (SftpClient sftp = new SftpClient(_config.Address, _config.Username, _config.Password))
+            SftpClient sftp = null;
+            if (_config.UseKeyFile)
             {
-                try
-                {
-                    sftp.Connect();
-                    sftp.ChangeDirectory(_config.RemoteDirectory);
-                    var files = sftp.ListDirectory(_config.RemoteDirectory).ToList();
-                    files.RemoveAll(f => !f.Name.EndsWith(".png"));
-
-                    // ** Duplicate Check
-                    string filename = string.Empty;
-                    do
-                    {
-                        imgID = this.generateID(32);
-                        filename = "." + imgID + ".png";
-                    } while (!(files.TrueForAll(f => !f.Name.Equals(filename))));
-                    
-                    using (var fileStream = new FileStream(filepath, FileMode.Open))
-                    {
-                        sftp.BufferSize = 4096;
-                        string remotePath = string.Format("{0}/{1}", _config.RemoteDirectory, filename);
-                        sftp.UploadFile(fileStream, remotePath);
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    Crashlogger.Write(ex);
-                    throw ex;
-                }
+                PrivateKeyFile key = new PrivateKeyFile(_config.PathToKeyFile);
+                sftp = new SftpClient(_config.Address, _config.Username, key);
             }
+            else sftp = new SftpClient(_config.Address, _config.Username, _config.Password);
+            try
+            {
+                sftp.Connect();                    
+                sftp.ChangeDirectory(_config.RemoteDirectory);
+                var files = sftp.ListDirectory(_config.RemoteDirectory).ToList();
+                files.RemoveAll(f => !f.Name.EndsWith(".png"));
+
+                // ** Duplicate Check
+                string filename = string.Empty;
+                do
+                {
+                    imgID = this.generateID(32);
+                    filename = imgID + ".png";
+                } while (!(files.TrueForAll(f => !f.Name.Equals(filename))));
+                    
+                using (var fileStream = new FileStream(filepath, FileMode.Open))
+                {
+                    sftp.BufferSize = 4096;
+                    string remotePath = string.Format("{0}/{1}", _config.RemoteDirectory, filename);
+                    sftp.UploadFile(fileStream, remotePath);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Crashlogger.Write(ex);
+                throw ex;
+            }
+            
             if(deleteAfterUpload) File.Delete(filepath);
             return string.Format("https://{0}/{1}.png", _config.Address, imgID);
         }
