@@ -15,6 +15,8 @@ namespace serwmImageUploader.Classes
         public static string Filepath { get => _filepath; }
         public static void Write(Exception exception, bool includeTimestamp = true) => Crashlogger.Write(exception.Message, includeTimestamp);
         
+        public static bool LogExits { get => File.Exists(Crashlogger.Filepath); }
+
         public static void Write(string message, bool includeTimestamp = true)
         {
             string output = string.Empty;

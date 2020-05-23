@@ -42,7 +42,7 @@ namespace serwmImageUploader
                 {
                     string filepath = args[0];
                     string link = _web.UploadScreenshot(filepath, false);
-                    this.CopyLinkToClipboard(link);
+                    this.CopyToClipboard(link);
                     Console.Beep();
                     this.Close();
                 }
@@ -54,7 +54,7 @@ namespace serwmImageUploader
             string[] filearray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             string filepath = filearray[0];
             string link = _web.UploadScreenshot(filepath, false);
-            this.CopyLinkToClipboard(link);
+            this.CopyToClipboard(link);
             Console.Beep();
         }
 
@@ -73,8 +73,9 @@ namespace serwmImageUploader
             {
                 Form send = (Form)sender;
                 if (send.DialogResult == DialogResult.Cancel) return;
-                string link = _web.UploadScreenshot(Application.StartupPath + "\\tmp.png");
-                this.CopyLinkToClipboard(link);
+                string filepath = Application.StartupPath + "\\tmp.png";
+                string link = _web.UploadScreenshot(filepath);
+                this.CopyToClipboard(link, filepath);
                 if (_web.Config.OpenImageAfterUpload && link != null) Process.Start(link);
                 Console.Beep();
             }
@@ -107,6 +108,8 @@ namespace serwmImageUploader
             HK.AddHotKey(Keys.F2, HotKey.MODKEY.MOD_NONE, "F2");
             HK.AddHotKey(Keys.Pause, HotKey.MODKEY.MOD_SHIFT, "SHIFT-BREAK");
             HK.AddHotKey(Keys.Pause, HotKey.MODKEY.MOD_NONE, "BREAK");
+
+            this.btnShowCrashfile.Enabled = Crashlogger.LogExits;
             return true;
         }
 
@@ -117,7 +120,7 @@ namespace serwmImageUploader
                 case "CTRL-R":
                     string path = Screenshotter.TakeScreenshot();
                     string link = _web.UploadScreenshot(path);
-                    this.CopyLinkToClipboard(link);
+                    this.CopyToClipboard(link, path);
                     if (_web.Config.OpenImageAfterUpload) Process.Start(link);
                     Console.Beep();
                     break;
@@ -131,7 +134,8 @@ namespace serwmImageUploader
                     }
                     break;
                 case "BREAK":
-                    this.Show();
+                    if (this.Visible) this.Hide();
+                    else this.Show();
                     break;
                 case "SHIFT-BREAK":
                     Console.Beep();
@@ -143,10 +147,19 @@ namespace serwmImageUploader
             }
         }
 
-        private void CopyLinkToClipboard(string link)
+        private void CopyToClipboard(string link)
         {
             if(link != null) Clipboard.SetText(link);
         }       
+
+        private void CopyToClipboard(string link, string filepath)
+        {
+            this.CopyToClipboard(link);
+            if (File.Exists(filepath))
+            {
+                // ** add image to clipboard
+            }
+        }
 
         private void btnHide_Click(object sender, EventArgs e)
         {
@@ -181,7 +194,7 @@ namespace serwmImageUploader
             {
                 string filepath = dlg.FileName;
                 string link = _web.UploadScreenshot(filepath, false);
-                this.CopyLinkToClipboard(link);
+                this.CopyToClipboard(link, filepath);
                 Console.Beep();
             }
         }
