@@ -40,6 +40,7 @@
             this.tbxRemoteDirectory = new System.Windows.Forms.TextBox();
             this.chkOpenAfterCreation = new System.Windows.Forms.CheckBox();
             this.grpServerSettings = new System.Windows.Forms.GroupBox();
+            this.btnBrowseKeyFile = new System.Windows.Forms.Button();
             this.tbxKeyFilePath = new System.Windows.Forms.TextBox();
             this.radUseSSHKey = new System.Windows.Forms.RadioButton();
             this.radUsePassword = new System.Windows.Forms.RadioButton();
@@ -50,7 +51,7 @@
             this.lblCroppedScreenshot = new System.Windows.Forms.Label();
             this.cmbFullscreenScreenshot = new System.Windows.Forms.ComboBox();
             this.lblFullscreen = new System.Windows.Forms.Label();
-            this.btnBrowseKeyFile = new System.Windows.Forms.Button();
+            this.chkPlayBeep = new System.Windows.Forms.CheckBox();
             this.grpServerSettings.SuspendLayout();
             this.grpHotkeys.SuspendLayout();
             this.SuspendLayout();
@@ -109,7 +110,7 @@
             // 
             // btnSaveRun
             // 
-            this.btnSaveRun.Location = new System.Drawing.Point(12, 187);
+            this.btnSaveRun.Location = new System.Drawing.Point(12, 208);
             this.btnSaveRun.Name = "btnSaveRun";
             this.btnSaveRun.Size = new System.Drawing.Size(296, 67);
             this.btnSaveRun.TabIndex = 5;
@@ -146,6 +147,7 @@
             // 
             // grpServerSettings
             // 
+            this.grpServerSettings.Controls.Add(this.chkPlayBeep);
             this.grpServerSettings.Controls.Add(this.btnBrowseKeyFile);
             this.grpServerSettings.Controls.Add(this.tbxKeyFilePath);
             this.grpServerSettings.Controls.Add(this.radUseSSHKey);
@@ -161,10 +163,21 @@
             this.grpServerSettings.Controls.Add(this.lblPassword);
             this.grpServerSettings.Location = new System.Drawing.Point(12, 12);
             this.grpServerSettings.Name = "grpServerSettings";
-            this.grpServerSettings.Size = new System.Drawing.Size(346, 169);
+            this.grpServerSettings.Size = new System.Drawing.Size(346, 190);
             this.grpServerSettings.TabIndex = 9;
             this.grpServerSettings.TabStop = false;
             this.grpServerSettings.Text = "Server Settings";
+            // 
+            // btnBrowseKeyFile
+            // 
+            this.btnBrowseKeyFile.Location = new System.Drawing.Point(261, 92);
+            this.btnBrowseKeyFile.Name = "btnBrowseKeyFile";
+            this.btnBrowseKeyFile.Size = new System.Drawing.Size(79, 23);
+            this.btnBrowseKeyFile.TabIndex = 13;
+            this.btnBrowseKeyFile.Text = "Browse";
+            this.btnBrowseKeyFile.UseVisualStyleBackColor = true;
+            this.btnBrowseKeyFile.Visible = false;
+            this.btnBrowseKeyFile.Click += new System.EventHandler(this.btnBrowseKeyFile_Click);
             // 
             // tbxKeyFilePath
             // 
@@ -268,23 +281,22 @@
             this.lblFullscreen.Text = "Fullscreen Screenshot:";
             this.lblFullscreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnBrowseKeyFile
+            // chkPlayBeep
             // 
-            this.btnBrowseKeyFile.Location = new System.Drawing.Point(261, 92);
-            this.btnBrowseKeyFile.Name = "btnBrowseKeyFile";
-            this.btnBrowseKeyFile.Size = new System.Drawing.Size(79, 23);
-            this.btnBrowseKeyFile.TabIndex = 13;
-            this.btnBrowseKeyFile.Text = "Browse";
-            this.btnBrowseKeyFile.UseVisualStyleBackColor = true;
-            this.btnBrowseKeyFile.Visible = false;
-            this.btnBrowseKeyFile.Click += new System.EventHandler(this.btnBrowseKeyFile_Click);
+            this.chkPlayBeep.AutoSize = true;
+            this.chkPlayBeep.Location = new System.Drawing.Point(11, 169);
+            this.chkPlayBeep.Name = "chkPlayBeep";
+            this.chkPlayBeep.Size = new System.Drawing.Size(149, 17);
+            this.chkPlayBeep.TabIndex = 14;
+            this.chkPlayBeep.Text = "Play Beep after Uploading";
+            this.chkPlayBeep.UseVisualStyleBackColor = true;
             // 
             // frmConfigwizard
             // 
             this.AcceptButton = this.btnSaveRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 269);
+            this.ClientSize = new System.Drawing.Size(600, 279);
             this.Controls.Add(this.grpHotkeys);
             this.Controls.Add(this.grpServerSettings);
             this.Controls.Add(this.btnSaveRun);
@@ -326,5 +338,6 @@
         private System.Windows.Forms.RadioButton radUsePassword;
         private System.Windows.Forms.TextBox tbxKeyFilePath;
         private System.Windows.Forms.Button btnBrowseKeyFile;
+        private System.Windows.Forms.CheckBox chkPlayBeep;
     }
 }

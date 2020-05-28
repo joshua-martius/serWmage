@@ -27,6 +27,7 @@ namespace serwmImageUploader
             this.tbxServerAddress.Text = config.Address;
             radUseSSHKey.Checked = config.UseKeyFile;
             if (config.UseKeyFile) tbxKeyFilePath.Text = config.PathToKeyFile;
+            chkPlayBeep.Checked = config.PlayBeep;
             this.chkOpenAfterCreation.Checked = Convert.ToBoolean(config.OpenImageAfterUpload);
         }
 
@@ -50,6 +51,7 @@ namespace serwmImageUploader
                 _config.RemoteDirectory = tbxRemoteDirectory.Text;
                 _config.OpenImageAfterUpload = chkOpenAfterCreation.Checked;
                 _config.UseKeyFile = radUseSSHKey.Checked;
+                _config.PlayBeep = chkPlayBeep.Checked;
                 if (_config.UseKeyFile) _config.PathToKeyFile = tbxKeyFilePath.Text;
                 _config.Save();
                 this.DialogResult = DialogResult.OK;

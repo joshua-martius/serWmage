@@ -11,7 +11,7 @@ namespace serwmImageUploader
 {
     public class Configuration
     {
-        private const int CONFIG_AMOUNT = 7;
+        private const int CONFIG_AMOUNT = 8;
 
         private string[] _config = new string[CONFIG_AMOUNT];
        
@@ -24,6 +24,11 @@ namespace serwmImageUploader
                 else _config[6] = value;
             }
         }
+
+        /// <summary>
+        /// Indicated wether a sound should be played after uploading.
+        /// </summary>
+        public bool PlayBeep { get => Convert.ToBoolean(_config[7]); set => _config[7] = value.ToString(); }
 
         /// <summary>
         /// Indicates wether password login or key file login shall be used.

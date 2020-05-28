@@ -43,7 +43,7 @@ namespace serwmImageUploader
                     string filepath = args[0];
                     string link = _web.UploadScreenshot(filepath, false);
                     this.CopyToClipboard(link);
-                    Console.Beep();
+                    if(_web.Config.PlayBeep) Console.Beep();
                     this.Close();
                 }
             }
@@ -55,7 +55,7 @@ namespace serwmImageUploader
             string filepath = filearray[0];
             string link = _web.UploadScreenshot(filepath, false);
             this.CopyToClipboard(link);
-            Console.Beep();
+            if(_web.Config.PlayBeep) Console.Beep();
         }
 
         private void GrpDragNDrop_DragEnter(object sender, DragEventArgs e)
@@ -77,7 +77,7 @@ namespace serwmImageUploader
                 string link = _web.UploadScreenshot(filepath);
                 this.CopyToClipboard(link, filepath);
                 if (_web.Config.OpenImageAfterUpload && link != null) Process.Start(link);
-                Console.Beep();
+                if(_web.Config.PlayBeep) Console.Beep();
             }
             catch (Exception ex)
             {
@@ -122,7 +122,7 @@ namespace serwmImageUploader
                     string link = _web.UploadScreenshot(path);
                     this.CopyToClipboard(link, path);
                     if (_web.Config.OpenImageAfterUpload) Process.Start(link);
-                    Console.Beep();
+                    if(_web.Config.PlayBeep) Console.Beep();
                     break;
                 case "F2":
                     if(!_openCropping)
@@ -138,8 +138,8 @@ namespace serwmImageUploader
                     else this.Show();
                     break;
                 case "SHIFT-BREAK":
-                    Console.Beep();
-                    Console.Beep();
+                    if(_web.Config.PlayBeep) Console.Beep();
+                    if(_web.Config.PlayBeep) Console.Beep();
                     Application.Exit();
                     return;
                 default:
@@ -158,6 +158,7 @@ namespace serwmImageUploader
             if (File.Exists(filepath))
             {
                 // ** add image to clipboard
+                Clipboard.SetData(DataFormats.Bitmap, Bitmap.FromFile(filepath));
             }
         }
 
@@ -180,7 +181,8 @@ namespace serwmImageUploader
             try
             {
                 frmCrashlog frm = new frmCrashlog();
-                frm.ShowDialog();
+                DialogResult result = frm.ShowDialog();
+                if (result.Equals(DialogResult.Cancel)) this.btnShowCrashfile.Enabled = false;
             }
             catch{}
         }
@@ -195,7 +197,7 @@ namespace serwmImageUploader
                 string filepath = dlg.FileName;
                 string link = _web.UploadScreenshot(filepath, false);
                 this.CopyToClipboard(link, filepath);
-                Console.Beep();
+                if(_web.Config.PlayBeep) Console.Beep();
             }
         }
     }
