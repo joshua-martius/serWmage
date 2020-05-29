@@ -15,6 +15,9 @@ namespace serwmImageUploader
 
         private string[] _config = new string[CONFIG_AMOUNT];
        
+        /// <summary>
+        /// The path to the SSH-Keyfile.
+        /// </summary>
         public string PathToKeyFile 
         {
             get => _config[6];

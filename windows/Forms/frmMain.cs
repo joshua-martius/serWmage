@@ -195,6 +195,7 @@ namespace serwmImageUploader
             if(dlg.ShowDialog().Equals(DialogResult.OK))
             {
                 string filepath = dlg.FileName;
+                if (!filepath.EndsWith(".png")) throw new Exception("Invalid file selected!");
                 string link = _web.UploadScreenshot(filepath, false);
                 this.CopyToClipboard(link, filepath);
                 if(_web.Config.PlayBeep) Console.Beep();
