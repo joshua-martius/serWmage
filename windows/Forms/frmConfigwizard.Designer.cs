@@ -40,20 +40,13 @@
             this.tbxRemoteDirectory = new System.Windows.Forms.TextBox();
             this.chkOpenAfterCreation = new System.Windows.Forms.CheckBox();
             this.grpServerSettings = new System.Windows.Forms.GroupBox();
+            this.chkPlayBeep = new System.Windows.Forms.CheckBox();
             this.btnBrowseKeyFile = new System.Windows.Forms.Button();
             this.tbxKeyFilePath = new System.Windows.Forms.TextBox();
             this.radUseSSHKey = new System.Windows.Forms.RadioButton();
             this.radUsePassword = new System.Windows.Forms.RadioButton();
-            this.grpHotkeys = new System.Windows.Forms.GroupBox();
-            this.cmbReOpenForm = new System.Windows.Forms.ComboBox();
-            this.lblFocusForm = new System.Windows.Forms.Label();
-            this.cmbCroppedScreenshot = new System.Windows.Forms.ComboBox();
-            this.lblCroppedScreenshot = new System.Windows.Forms.Label();
-            this.cmbFullscreenScreenshot = new System.Windows.Forms.ComboBox();
-            this.lblFullscreen = new System.Windows.Forms.Label();
-            this.chkPlayBeep = new System.Windows.Forms.CheckBox();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
             this.grpServerSettings.SuspendLayout();
-            this.grpHotkeys.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbxServerAddress
@@ -112,7 +105,7 @@
             // 
             this.btnSaveRun.Location = new System.Drawing.Point(12, 208);
             this.btnSaveRun.Name = "btnSaveRun";
-            this.btnSaveRun.Size = new System.Drawing.Size(296, 67);
+            this.btnSaveRun.Size = new System.Drawing.Size(346, 67);
             this.btnSaveRun.TabIndex = 5;
             this.btnSaveRun.Text = "Save && Run";
             this.btnSaveRun.UseVisualStyleBackColor = true;
@@ -147,6 +140,7 @@
             // 
             // grpServerSettings
             // 
+            this.grpServerSettings.Controls.Add(this.btnOpenFolder);
             this.grpServerSettings.Controls.Add(this.chkPlayBeep);
             this.grpServerSettings.Controls.Add(this.btnBrowseKeyFile);
             this.grpServerSettings.Controls.Add(this.tbxKeyFilePath);
@@ -167,6 +161,16 @@
             this.grpServerSettings.TabIndex = 9;
             this.grpServerSettings.TabStop = false;
             this.grpServerSettings.Text = "Server Settings";
+            // 
+            // chkPlayBeep
+            // 
+            this.chkPlayBeep.AutoSize = true;
+            this.chkPlayBeep.Location = new System.Drawing.Point(11, 169);
+            this.chkPlayBeep.Name = "chkPlayBeep";
+            this.chkPlayBeep.Size = new System.Drawing.Size(149, 17);
+            this.chkPlayBeep.TabIndex = 14;
+            this.chkPlayBeep.Text = "Play Beep after Uploading";
+            this.chkPlayBeep.UseVisualStyleBackColor = true;
             // 
             // btnBrowseKeyFile
             // 
@@ -212,92 +216,22 @@
             this.radUsePassword.UseVisualStyleBackColor = true;
             this.radUsePassword.CheckedChanged += new System.EventHandler(this.radUseSSHKey_CheckedChanged);
             // 
-            // grpHotkeys
+            // btnOpenFolder
             // 
-            this.grpHotkeys.Controls.Add(this.cmbReOpenForm);
-            this.grpHotkeys.Controls.Add(this.lblFocusForm);
-            this.grpHotkeys.Controls.Add(this.cmbCroppedScreenshot);
-            this.grpHotkeys.Controls.Add(this.lblCroppedScreenshot);
-            this.grpHotkeys.Controls.Add(this.cmbFullscreenScreenshot);
-            this.grpHotkeys.Controls.Add(this.lblFullscreen);
-            this.grpHotkeys.Location = new System.Drawing.Point(364, 12);
-            this.grpHotkeys.Name = "grpHotkeys";
-            this.grpHotkeys.Size = new System.Drawing.Size(223, 216);
-            this.grpHotkeys.TabIndex = 10;
-            this.grpHotkeys.TabStop = false;
-            this.grpHotkeys.Text = "Custom Hotkeys";
-            // 
-            // cmbReOpenForm
-            // 
-            this.cmbReOpenForm.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbReOpenForm.FormattingEnabled = true;
-            this.cmbReOpenForm.Location = new System.Drawing.Point(130, 93);
-            this.cmbReOpenForm.Name = "cmbReOpenForm";
-            this.cmbReOpenForm.Size = new System.Drawing.Size(87, 21);
-            this.cmbReOpenForm.TabIndex = 16;
-            // 
-            // lblFocusForm
-            // 
-            this.lblFocusForm.Location = new System.Drawing.Point(6, 83);
-            this.lblFocusForm.Name = "lblFocusForm";
-            this.lblFocusForm.Size = new System.Drawing.Size(118, 39);
-            this.lblFocusForm.TabIndex = 15;
-            this.lblFocusForm.Text = "Re-open Form:";
-            this.lblFocusForm.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cmbCroppedScreenshot
-            // 
-            this.cmbCroppedScreenshot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbCroppedScreenshot.FormattingEnabled = true;
-            this.cmbCroppedScreenshot.Location = new System.Drawing.Point(130, 58);
-            this.cmbCroppedScreenshot.Name = "cmbCroppedScreenshot";
-            this.cmbCroppedScreenshot.Size = new System.Drawing.Size(87, 21);
-            this.cmbCroppedScreenshot.TabIndex = 14;
-            // 
-            // lblCroppedScreenshot
-            // 
-            this.lblCroppedScreenshot.Location = new System.Drawing.Point(6, 48);
-            this.lblCroppedScreenshot.Name = "lblCroppedScreenshot";
-            this.lblCroppedScreenshot.Size = new System.Drawing.Size(118, 39);
-            this.lblCroppedScreenshot.TabIndex = 13;
-            this.lblCroppedScreenshot.Text = "Cropped Screenshot:";
-            this.lblCroppedScreenshot.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cmbFullscreenScreenshot
-            // 
-            this.cmbFullscreenScreenshot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbFullscreenScreenshot.FormattingEnabled = true;
-            this.cmbFullscreenScreenshot.Location = new System.Drawing.Point(130, 26);
-            this.cmbFullscreenScreenshot.Name = "cmbFullscreenScreenshot";
-            this.cmbFullscreenScreenshot.Size = new System.Drawing.Size(87, 21);
-            this.cmbFullscreenScreenshot.TabIndex = 12;
-            // 
-            // lblFullscreen
-            // 
-            this.lblFullscreen.Location = new System.Drawing.Point(6, 16);
-            this.lblFullscreen.Name = "lblFullscreen";
-            this.lblFullscreen.Size = new System.Drawing.Size(118, 39);
-            this.lblFullscreen.TabIndex = 11;
-            this.lblFullscreen.Text = "Fullscreen Screenshot:";
-            this.lblFullscreen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // chkPlayBeep
-            // 
-            this.chkPlayBeep.AutoSize = true;
-            this.chkPlayBeep.Location = new System.Drawing.Point(11, 169);
-            this.chkPlayBeep.Name = "chkPlayBeep";
-            this.chkPlayBeep.Size = new System.Drawing.Size(149, 17);
-            this.chkPlayBeep.TabIndex = 14;
-            this.chkPlayBeep.Text = "Play Beep after Uploading";
-            this.chkPlayBeep.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Location = new System.Drawing.Point(261, 121);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(79, 63);
+            this.btnOpenFolder.TabIndex = 15;
+            this.btnOpenFolder.Text = "Open Application Folder";
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
             // frmConfigwizard
             // 
             this.AcceptButton = this.btnSaveRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 279);
-            this.Controls.Add(this.grpHotkeys);
+            this.ClientSize = new System.Drawing.Size(365, 279);
             this.Controls.Add(this.grpServerSettings);
             this.Controls.Add(this.btnSaveRun);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -309,7 +243,6 @@
             this.Text = "Configuration Creator";
             this.grpServerSettings.ResumeLayout(false);
             this.grpServerSettings.PerformLayout();
-            this.grpHotkeys.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -327,17 +260,11 @@
         private System.Windows.Forms.TextBox tbxRemoteDirectory;
         private System.Windows.Forms.CheckBox chkOpenAfterCreation;
         private System.Windows.Forms.GroupBox grpServerSettings;
-        private System.Windows.Forms.GroupBox grpHotkeys;
-        private System.Windows.Forms.Label lblFullscreen;
-        private System.Windows.Forms.ComboBox cmbFullscreenScreenshot;
-        private System.Windows.Forms.ComboBox cmbCroppedScreenshot;
-        private System.Windows.Forms.Label lblCroppedScreenshot;
-        private System.Windows.Forms.ComboBox cmbReOpenForm;
-        private System.Windows.Forms.Label lblFocusForm;
         private System.Windows.Forms.RadioButton radUseSSHKey;
         private System.Windows.Forms.RadioButton radUsePassword;
         private System.Windows.Forms.TextBox tbxKeyFilePath;
         private System.Windows.Forms.Button btnBrowseKeyFile;
         private System.Windows.Forms.CheckBox chkPlayBeep;
+        private System.Windows.Forms.Button btnOpenFolder;
     }
 }
