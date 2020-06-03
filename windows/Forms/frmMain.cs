@@ -34,6 +34,8 @@ namespace serwmImageUploader
 
         }
 
+        ~frmMain() => File.Delete(Application.StartupPath + "\\.png");
+
         public frmMain(List<string> args) : this()
         {
             if(args.Count.Equals(1))
