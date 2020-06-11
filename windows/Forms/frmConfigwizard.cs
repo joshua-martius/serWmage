@@ -24,9 +24,16 @@ namespace serwmImageUploader
         {
             this.tbxUsername.Text = config.Username;
             this.tbxPassword.Text = config.Password;
+            
             this.tbxRemoteDirectory.Text = config.RemoteDirectory;
             this.tbxServerAddress.Text = config.Address;
+
+            this.radImageToClipboard.Checked = !config.LinkToClipboard;
+            this.radLinkToClipboard.Checked = config.LinkToClipboard;
+
             radUseSSHKey.Checked = config.UseKeyFile;
+            radUsePassword.Checked = !config.UseKeyFile;
+
             if (config.UseKeyFile) tbxKeyFilePath.Text = config.PathToKeyFile;
             chkPlayBeep.Checked = config.PlayBeep;
             this.chkOpenAfterCreation.Checked = Convert.ToBoolean(config.OpenImageAfterUpload);
@@ -51,6 +58,7 @@ namespace serwmImageUploader
                 _config.Address = tbxServerAddress.Text;
                 _config.RemoteDirectory = tbxRemoteDirectory.Text;
                 _config.OpenImageAfterUpload = chkOpenAfterCreation.Checked;
+                _config.LinkToClipboard = radLinkToClipboard.Checked;
                 _config.UseKeyFile = radUseSSHKey.Checked;
                 _config.PlayBeep = chkPlayBeep.Checked;
                 if (_config.UseKeyFile) _config.PathToKeyFile = tbxKeyFilePath.Text;

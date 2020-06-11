@@ -51,17 +51,11 @@ namespace serwmImageUploader.Classes
             {
                 sftp.Connect();                    
                 sftp.ChangeDirectory(_config.RemoteDirectory);
-                var files = sftp.ListDirectory(_config.RemoteDirectory).ToList();
-                files.RemoveAll(f => !f.Name.EndsWith(".png"));
 
-                // ** Duplicate Check
-                string filename = string.Empty;
-                do
-                {
-                    imgID = this.generateID(32);
-                    filename = imgID + ".png";
-                } while (!(files.TrueForAll(f => !f.Name.Equals(filename))));
-                    
+                string filename = this.generateUniqueID(sftp, 32);
+                imgID = filename;
+                filename += ".png";
+
                 using (var fileStream = new FileStream(filepath, FileMode.Open))
                 {
                     sftp.BufferSize = 4096;
@@ -76,7 +70,8 @@ namespace serwmImageUploader.Classes
                 throw ex;
             }
             
-            if(deleteAfterUpload) File.Delete(filepath);
+            // ToDo: Re-add deleteafterupload function
+            //if(deleteAfterUpload) File.Delete(filepath);
             return string.Format("https://{0}/{1}.png", _config.Address, imgID);
         }
 
@@ -91,6 +86,19 @@ namespace serwmImageUploader.Classes
             Random rnd = new Random();
             for (int i = 0; i < length; i++) output += _baseString[rnd.Next(0, _baseString.Length)];
             return output;
+        }
+
+        private string generateUniqueID(SftpClient sftpclient, int length)
+        {
+            var files = sftpclient.ListDirectory(_config.RemoteDirectory).ToList();
+            files.RemoveAll(f => !f.Name.EndsWith(".png"));
+            string uniqueid = string.Empty, filename = string.Empty;
+            do
+            {
+                uniqueid = this.generateID(32);
+                filename = uniqueid + ".png";
+            } while (!(files.TrueForAll(f => !f.Name.Equals(filename))));
+            return uniqueid;
         }
     }
 }

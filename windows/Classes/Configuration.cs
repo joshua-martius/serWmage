@@ -11,7 +11,7 @@ namespace serwmImageUploader
 {
     public class Configuration
     {
-        private const int CONFIG_AMOUNT = 8;
+        private const int CONFIG_AMOUNT = 9;
 
         private string[] _config = new string[CONFIG_AMOUNT];
        
@@ -29,7 +29,12 @@ namespace serwmImageUploader
         }
 
         /// <summary>
-        /// Indicated wether a sound should be played after uploading.
+        /// Indicates wether the actual image or the link to the image should be copied into the clipboard.
+        /// </summary>
+        public bool LinkToClipboard { get => Convert.ToBoolean(_config[8]); set => _config[8] = value.ToString(); }
+
+        /// <summary>
+        /// Indicates wether a sound should be played after uploading.
         /// </summary>
         public bool PlayBeep { get => Convert.ToBoolean(_config[7]); set => _config[7] = value.ToString(); }
 

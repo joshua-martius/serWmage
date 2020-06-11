@@ -40,13 +40,17 @@
             this.tbxRemoteDirectory = new System.Windows.Forms.TextBox();
             this.chkOpenAfterCreation = new System.Windows.Forms.CheckBox();
             this.grpServerSettings = new System.Windows.Forms.GroupBox();
+            this.btnOpenFolder = new System.Windows.Forms.Button();
             this.chkPlayBeep = new System.Windows.Forms.CheckBox();
             this.btnBrowseKeyFile = new System.Windows.Forms.Button();
             this.tbxKeyFilePath = new System.Windows.Forms.TextBox();
             this.radUseSSHKey = new System.Windows.Forms.RadioButton();
             this.radUsePassword = new System.Windows.Forms.RadioButton();
-            this.btnOpenFolder = new System.Windows.Forms.Button();
+            this.grpImageSettings = new System.Windows.Forms.GroupBox();
+            this.radImageToClipboard = new System.Windows.Forms.RadioButton();
+            this.radLinkToClipboard = new System.Windows.Forms.RadioButton();
             this.grpServerSettings.SuspendLayout();
+            this.grpImageSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbxServerAddress
@@ -71,7 +75,7 @@
             this.tbxPassword.MaxLength = 32;
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = 'X';
-            this.tbxPassword.Size = new System.Drawing.Size(185, 20);
+            this.tbxPassword.Size = new System.Drawing.Size(217, 20);
             this.tbxPassword.TabIndex = 2;
             // 
             // lblServeraddress
@@ -103,9 +107,9 @@
             // 
             // btnSaveRun
             // 
-            this.btnSaveRun.Location = new System.Drawing.Point(12, 208);
+            this.btnSaveRun.Location = new System.Drawing.Point(12, 267);
             this.btnSaveRun.Name = "btnSaveRun";
-            this.btnSaveRun.Size = new System.Drawing.Size(346, 67);
+            this.btnSaveRun.Size = new System.Drawing.Size(295, 40);
             this.btnSaveRun.TabIndex = 5;
             this.btnSaveRun.Text = "Save && Run";
             this.btnSaveRun.UseVisualStyleBackColor = true;
@@ -125,13 +129,13 @@
             this.tbxRemoteDirectory.Location = new System.Drawing.Point(102, 120);
             this.tbxRemoteDirectory.MaxLength = 128;
             this.tbxRemoteDirectory.Name = "tbxRemoteDirectory";
-            this.tbxRemoteDirectory.Size = new System.Drawing.Size(153, 20);
+            this.tbxRemoteDirectory.Size = new System.Drawing.Size(186, 20);
             this.tbxRemoteDirectory.TabIndex = 3;
             // 
             // chkOpenAfterCreation
             // 
             this.chkOpenAfterCreation.AutoSize = true;
-            this.chkOpenAfterCreation.Location = new System.Drawing.Point(11, 146);
+            this.chkOpenAfterCreation.Location = new System.Drawing.Point(128, 19);
             this.chkOpenAfterCreation.Name = "chkOpenAfterCreation";
             this.chkOpenAfterCreation.Size = new System.Drawing.Size(159, 17);
             this.chkOpenAfterCreation.TabIndex = 4;
@@ -141,13 +145,11 @@
             // grpServerSettings
             // 
             this.grpServerSettings.Controls.Add(this.btnOpenFolder);
-            this.grpServerSettings.Controls.Add(this.chkPlayBeep);
             this.grpServerSettings.Controls.Add(this.btnBrowseKeyFile);
             this.grpServerSettings.Controls.Add(this.tbxKeyFilePath);
             this.grpServerSettings.Controls.Add(this.radUseSSHKey);
             this.grpServerSettings.Controls.Add(this.radUsePassword);
             this.grpServerSettings.Controls.Add(this.label1);
-            this.grpServerSettings.Controls.Add(this.chkOpenAfterCreation);
             this.grpServerSettings.Controls.Add(this.tbxServerAddress);
             this.grpServerSettings.Controls.Add(this.lblRemoteDirectory);
             this.grpServerSettings.Controls.Add(this.tbxUsername);
@@ -157,15 +159,25 @@
             this.grpServerSettings.Controls.Add(this.lblPassword);
             this.grpServerSettings.Location = new System.Drawing.Point(12, 12);
             this.grpServerSettings.Name = "grpServerSettings";
-            this.grpServerSettings.Size = new System.Drawing.Size(346, 190);
+            this.grpServerSettings.Size = new System.Drawing.Size(295, 177);
             this.grpServerSettings.TabIndex = 9;
             this.grpServerSettings.TabStop = false;
             this.grpServerSettings.Text = "Server Settings";
             // 
+            // btnOpenFolder
+            // 
+            this.btnOpenFolder.Location = new System.Drawing.Point(9, 146);
+            this.btnOpenFolder.Name = "btnOpenFolder";
+            this.btnOpenFolder.Size = new System.Drawing.Size(279, 24);
+            this.btnOpenFolder.TabIndex = 15;
+            this.btnOpenFolder.Text = "Open Application Folder";
+            this.btnOpenFolder.UseVisualStyleBackColor = true;
+            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
+            // 
             // chkPlayBeep
             // 
             this.chkPlayBeep.AutoSize = true;
-            this.chkPlayBeep.Location = new System.Drawing.Point(11, 169);
+            this.chkPlayBeep.Location = new System.Drawing.Point(128, 41);
             this.chkPlayBeep.Name = "chkPlayBeep";
             this.chkPlayBeep.Size = new System.Drawing.Size(149, 17);
             this.chkPlayBeep.TabIndex = 14;
@@ -174,9 +186,9 @@
             // 
             // btnBrowseKeyFile
             // 
-            this.btnBrowseKeyFile.Location = new System.Drawing.Point(261, 92);
+            this.btnBrowseKeyFile.Location = new System.Drawing.Point(204, 67);
             this.btnBrowseKeyFile.Name = "btnBrowseKeyFile";
-            this.btnBrowseKeyFile.Size = new System.Drawing.Size(79, 23);
+            this.btnBrowseKeyFile.Size = new System.Drawing.Size(84, 23);
             this.btnBrowseKeyFile.TabIndex = 13;
             this.btnBrowseKeyFile.Text = "Browse";
             this.btnBrowseKeyFile.UseVisualStyleBackColor = true;
@@ -185,10 +197,10 @@
             // 
             // tbxKeyFilePath
             // 
-            this.tbxKeyFilePath.Location = new System.Drawing.Point(70, 94);
+            this.tbxKeyFilePath.Location = new System.Drawing.Point(69, 93);
             this.tbxKeyFilePath.Name = "tbxKeyFilePath";
             this.tbxKeyFilePath.ReadOnly = true;
-            this.tbxKeyFilePath.Size = new System.Drawing.Size(185, 20);
+            this.tbxKeyFilePath.Size = new System.Drawing.Size(218, 20);
             this.tbxKeyFilePath.TabIndex = 11;
             this.tbxKeyFilePath.Visible = false;
             // 
@@ -216,22 +228,48 @@
             this.radUsePassword.UseVisualStyleBackColor = true;
             this.radUsePassword.CheckedChanged += new System.EventHandler(this.radUseSSHKey_CheckedChanged);
             // 
-            // btnOpenFolder
+            // grpImageSettings
             // 
-            this.btnOpenFolder.Location = new System.Drawing.Point(261, 121);
-            this.btnOpenFolder.Name = "btnOpenFolder";
-            this.btnOpenFolder.Size = new System.Drawing.Size(79, 63);
-            this.btnOpenFolder.TabIndex = 15;
-            this.btnOpenFolder.Text = "Open Application Folder";
-            this.btnOpenFolder.UseVisualStyleBackColor = true;
-            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
+            this.grpImageSettings.Controls.Add(this.radLinkToClipboard);
+            this.grpImageSettings.Controls.Add(this.radImageToClipboard);
+            this.grpImageSettings.Controls.Add(this.chkPlayBeep);
+            this.grpImageSettings.Controls.Add(this.chkOpenAfterCreation);
+            this.grpImageSettings.Location = new System.Drawing.Point(12, 195);
+            this.grpImageSettings.Name = "grpImageSettings";
+            this.grpImageSettings.Size = new System.Drawing.Size(295, 66);
+            this.grpImageSettings.TabIndex = 10;
+            this.grpImageSettings.TabStop = false;
+            this.grpImageSettings.Text = "Image Settings";
+            // 
+            // radImageToClipboard
+            // 
+            this.radImageToClipboard.AutoSize = true;
+            this.radImageToClipboard.Location = new System.Drawing.Point(9, 19);
+            this.radImageToClipboard.Name = "radImageToClipboard";
+            this.radImageToClipboard.Size = new System.Drawing.Size(113, 17);
+            this.radImageToClipboard.TabIndex = 15;
+            this.radImageToClipboard.TabStop = true;
+            this.radImageToClipboard.Text = "Image -> Clipboard";
+            this.radImageToClipboard.UseVisualStyleBackColor = true;
+            // 
+            // radLinkToClipboard
+            // 
+            this.radLinkToClipboard.AutoSize = true;
+            this.radLinkToClipboard.Location = new System.Drawing.Point(9, 41);
+            this.radLinkToClipboard.Name = "radLinkToClipboard";
+            this.radLinkToClipboard.Size = new System.Drawing.Size(104, 17);
+            this.radLinkToClipboard.TabIndex = 16;
+            this.radLinkToClipboard.TabStop = true;
+            this.radLinkToClipboard.Text = "Link -> Clipboard";
+            this.radLinkToClipboard.UseVisualStyleBackColor = true;
             // 
             // frmConfigwizard
             // 
             this.AcceptButton = this.btnSaveRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(365, 279);
+            this.ClientSize = new System.Drawing.Size(312, 313);
+            this.Controls.Add(this.grpImageSettings);
             this.Controls.Add(this.grpServerSettings);
             this.Controls.Add(this.btnSaveRun);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -243,6 +281,8 @@
             this.Text = "Configuration Creator";
             this.grpServerSettings.ResumeLayout(false);
             this.grpServerSettings.PerformLayout();
+            this.grpImageSettings.ResumeLayout(false);
+            this.grpImageSettings.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -266,5 +306,8 @@
         private System.Windows.Forms.Button btnBrowseKeyFile;
         private System.Windows.Forms.CheckBox chkPlayBeep;
         private System.Windows.Forms.Button btnOpenFolder;
+        private System.Windows.Forms.GroupBox grpImageSettings;
+        private System.Windows.Forms.RadioButton radLinkToClipboard;
+        private System.Windows.Forms.RadioButton radImageToClipboard;
     }
 }

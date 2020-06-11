@@ -44,7 +44,7 @@ namespace serwmImageUploader
                 {
                     string filepath = args[0];
                     string link = _web.UploadScreenshot(filepath, false);
-                    this.CopyToClipboard(link);
+                    this.CopyToClipboard(link, filepath);
                     if(_web.Config.PlayBeep) Console.Beep();
                     this.Close();
                 }
@@ -56,7 +56,7 @@ namespace serwmImageUploader
             string[] filearray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             string filepath = filearray[0];
             string link = _web.UploadScreenshot(filepath, false);
-            this.CopyToClipboard(link);
+            this.CopyToClipboard(link, filepath);
             if(_web.Config.PlayBeep) Console.Beep();
         }
 
@@ -147,20 +147,17 @@ namespace serwmImageUploader
                 default:
                     break;
             }
-        }
-
-        private void CopyToClipboard(string link)
-        {
-            if(link != null) Clipboard.SetText(link);
-        }       
+        } 
 
         private void CopyToClipboard(string link, string filepath)
         {
-            this.CopyToClipboard(link);
-            if (File.Exists(filepath))
+            if (_web.Config.LinkToClipboard)
             {
-                // ** add image to clipboard
-                Clipboard.SetData(DataFormats.Bitmap, Bitmap.FromFile(filepath));
+                if (link != null) Clipboard.SetText(link);
+            }
+            else
+            {
+                if (File.Exists(filepath)) Clipboard.SetData(DataFormats.Bitmap,Bitmap.FromFile(filepath));
             }
         }
 
