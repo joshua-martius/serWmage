@@ -28,10 +28,27 @@ namespace serwmImageUploader
             InitializeComponent();
             if (!InitializeConfiguration()) Environment.Exit(0);
             this.Text += " V" + Application.ProductVersion;
-            this.grpDragNDrop.AllowDrop = true;
-            this.grpDragNDrop.DragEnter += this.GrpDragNDrop_DragEnter;
-            this.grpDragNDrop.DragDrop += this.GrpDragNDrop_DragDrop;
+            this.AllowDrop = true;
+            this.DragEnter += this.FrmMain_DragEnter;
+            this.DragDrop += this.FrmMain_DragDrop;
 
+        }
+
+        private void FrmMain_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] filearray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            string filepath = filearray[0];
+            string link = _web.UploadScreenshot(filepath, false);
+            this.CopyToClipboard(link, filepath, true);
+            if (_web.Config.PlayBeep) Console.Beep();
+        }
+
+        private void FrmMain_DragEnter(object sender, DragEventArgs e)
+        {
+            string[] filearray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            List<string> filelist = filearray.ToList();
+            if (!filelist.TrueForAll(str => str.EndsWith(".png"))) return;
+            else e.Effect = DragDropEffects.Copy;
         }
 
         ~frmMain() => File.Delete(Application.StartupPath + "\\.png");
@@ -49,23 +66,6 @@ namespace serwmImageUploader
                     this.Close();
                 }
             }
-        }
-
-        private void GrpDragNDrop_DragDrop(object sender, DragEventArgs e)
-        {
-            string[] filearray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            string filepath = filearray[0];
-            string link = _web.UploadScreenshot(filepath, false);
-            this.CopyToClipboard(link, filepath);
-            if(_web.Config.PlayBeep) Console.Beep();
-        }
-
-        private void GrpDragNDrop_DragEnter(object sender, DragEventArgs e)
-        {
-            string[] filearray = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            List<string> filelist = filearray.ToList();
-            if (!filelist.TrueForAll(str => str.EndsWith(".png"))) return;
-            else e.Effect = DragDropEffects.Copy;
         }
 
         private void Drawer_FormClosed(object sender, FormClosedEventArgs e)
@@ -149,9 +149,9 @@ namespace serwmImageUploader
             }
         } 
 
-        private void CopyToClipboard(string link, string filepath)
+        private void CopyToClipboard(string link, string filepath, bool forceLink = false)
         {
-            if (_web.Config.LinkToClipboard)
+            if (forceLink || _web.Config.LinkToClipboard)
             {
                 if (link != null) Clipboard.SetText(link);
             }

@@ -33,12 +33,11 @@
             this.btnOpenConfiguration = new System.Windows.Forms.Button();
             this.btnShowCrashfile = new System.Windows.Forms.Button();
             this.btnUploadCustom = new System.Windows.Forms.Button();
-            this.grpDragNDrop = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
             // btnHide
             // 
-            this.btnHide.Location = new System.Drawing.Point(12, 114);
+            this.btnHide.Location = new System.Drawing.Point(12, 165);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(139, 45);
             this.btnHide.TabIndex = 2;
@@ -48,7 +47,7 @@
             // 
             // btnOpenConfiguration
             // 
-            this.btnOpenConfiguration.Location = new System.Drawing.Point(157, 12);
+            this.btnOpenConfiguration.Location = new System.Drawing.Point(12, 63);
             this.btnOpenConfiguration.Name = "btnOpenConfiguration";
             this.btnOpenConfiguration.Size = new System.Drawing.Size(139, 45);
             this.btnOpenConfiguration.TabIndex = 3;
@@ -58,7 +57,7 @@
             // 
             // btnShowCrashfile
             // 
-            this.btnShowCrashfile.Location = new System.Drawing.Point(12, 63);
+            this.btnShowCrashfile.Location = new System.Drawing.Point(12, 114);
             this.btnShowCrashfile.Name = "btnShowCrashfile";
             this.btnShowCrashfile.Size = new System.Drawing.Size(139, 45);
             this.btnShowCrashfile.TabIndex = 1;
@@ -76,21 +75,11 @@
             this.btnUploadCustom.UseVisualStyleBackColor = true;
             this.btnUploadCustom.Click += new System.EventHandler(this.btnUploadCustom_Click);
             // 
-            // grpDragNDrop
-            // 
-            this.grpDragNDrop.Location = new System.Drawing.Point(157, 63);
-            this.grpDragNDrop.Name = "grpDragNDrop";
-            this.grpDragNDrop.Size = new System.Drawing.Size(136, 96);
-            this.grpDragNDrop.TabIndex = 4;
-            this.grpDragNDrop.TabStop = false;
-            this.grpDragNDrop.Text = "Drag and Drop Box";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(305, 171);
-            this.Controls.Add(this.grpDragNDrop);
+            this.ClientSize = new System.Drawing.Size(164, 216);
             this.Controls.Add(this.btnUploadCustom);
             this.Controls.Add(this.btnShowCrashfile);
             this.Controls.Add(this.btnOpenConfiguration);
@@ -112,7 +101,6 @@
         private System.Windows.Forms.Button btnOpenConfiguration;
         private System.Windows.Forms.Button btnShowCrashfile;
         private System.Windows.Forms.Button btnUploadCustom;
-        private System.Windows.Forms.GroupBox grpDragNDrop;
     }
 }
 

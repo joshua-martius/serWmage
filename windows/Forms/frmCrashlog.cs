@@ -35,6 +35,7 @@ namespace serwmImageUploader.Forms
             {
                 File.Delete(Crashlogger.Filepath);
                 rtbCrashlog.Clear();
+                this.Close();
             }
             catch (Exception ex)
             {
