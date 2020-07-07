@@ -33,13 +33,14 @@
             this.btnOpenConfiguration = new System.Windows.Forms.Button();
             this.btnShowCrashfile = new System.Windows.Forms.Button();
             this.btnUploadCustom = new System.Windows.Forms.Button();
+            this.lblGithub = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // btnHide
             // 
             this.btnHide.Location = new System.Drawing.Point(12, 165);
             this.btnHide.Name = "btnHide";
-            this.btnHide.Size = new System.Drawing.Size(139, 45);
+            this.btnHide.Size = new System.Drawing.Size(154, 45);
             this.btnHide.TabIndex = 2;
             this.btnHide.Text = "Move to Background";
             this.btnHide.UseVisualStyleBackColor = true;
@@ -49,7 +50,7 @@
             // 
             this.btnOpenConfiguration.Location = new System.Drawing.Point(12, 63);
             this.btnOpenConfiguration.Name = "btnOpenConfiguration";
-            this.btnOpenConfiguration.Size = new System.Drawing.Size(139, 45);
+            this.btnOpenConfiguration.Size = new System.Drawing.Size(154, 45);
             this.btnOpenConfiguration.TabIndex = 3;
             this.btnOpenConfiguration.Text = "Open Configuration";
             this.btnOpenConfiguration.UseVisualStyleBackColor = true;
@@ -59,7 +60,7 @@
             // 
             this.btnShowCrashfile.Location = new System.Drawing.Point(12, 114);
             this.btnShowCrashfile.Name = "btnShowCrashfile";
-            this.btnShowCrashfile.Size = new System.Drawing.Size(139, 45);
+            this.btnShowCrashfile.Size = new System.Drawing.Size(154, 45);
             this.btnShowCrashfile.TabIndex = 1;
             this.btnShowCrashfile.Text = "Show Crashfile";
             this.btnShowCrashfile.UseVisualStyleBackColor = true;
@@ -69,17 +70,29 @@
             // 
             this.btnUploadCustom.Location = new System.Drawing.Point(12, 12);
             this.btnUploadCustom.Name = "btnUploadCustom";
-            this.btnUploadCustom.Size = new System.Drawing.Size(139, 45);
+            this.btnUploadCustom.Size = new System.Drawing.Size(154, 45);
             this.btnUploadCustom.TabIndex = 0;
             this.btnUploadCustom.Text = "Upload own Image";
             this.btnUploadCustom.UseVisualStyleBackColor = true;
             this.btnUploadCustom.Click += new System.EventHandler(this.btnUploadCustom_Click);
             // 
+            // lblGithub
+            // 
+            this.lblGithub.AutoSize = true;
+            this.lblGithub.Location = new System.Drawing.Point(9, 213);
+            this.lblGithub.Name = "lblGithub";
+            this.lblGithub.Size = new System.Drawing.Size(163, 13);
+            this.lblGithub.TabIndex = 4;
+            this.lblGithub.TabStop = true;
+            this.lblGithub.Text = "github.com/y0sh1DE/serWmage";
+            this.lblGithub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblGithub_LinkClicked);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(164, 216);
+            this.ClientSize = new System.Drawing.Size(178, 234);
+            this.Controls.Add(this.lblGithub);
             this.Controls.Add(this.btnUploadCustom);
             this.Controls.Add(this.btnShowCrashfile);
             this.Controls.Add(this.btnOpenConfiguration);
@@ -92,6 +105,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "serWmage";
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -101,6 +115,7 @@
         private System.Windows.Forms.Button btnOpenConfiguration;
         private System.Windows.Forms.Button btnShowCrashfile;
         private System.Windows.Forms.Button btnUploadCustom;
+        private System.Windows.Forms.LinkLabel lblGithub;
     }
 }
 

@@ -200,5 +200,10 @@ namespace serwmImageUploader
                 if(_web.Config.PlayBeep) Console.Beep();
             }
         }
+
+        private void lblGithub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("https://github.com/y0sh1DE/serwmage");
+        }
     }
 }
