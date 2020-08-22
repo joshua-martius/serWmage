@@ -12,4 +12,3 @@ These are the default hotkeys. It is already planned to make them customizable.
 ## SSH-Key Login (Windows)
 __Please note__ that only ssh keys in ssh-rsa format are supported. 
 In addition, they need to be stored in a file already.
-Password protected keys are not supported yet, but it is about to get implemented.
