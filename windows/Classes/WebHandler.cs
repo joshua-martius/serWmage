@@ -70,7 +70,6 @@ namespace serwmImageUploader.Classes
                 throw ex;
             }
             
-            // ToDo: Re-add deleteafterupload function
             if(deleteAfterUpload) File.Delete(filepath);
             return string.Format("https://{0}/{1}.png", _config.Address, imgID);
         }
