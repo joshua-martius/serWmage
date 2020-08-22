@@ -30,6 +30,7 @@ namespace serwmImageUploader.Forms
             int height = Screen.AllScreens.ToList().Max(scr => scr.Bounds.Height);
             int leftshift = Screen.AllScreens.ToList().Min(scr => scr.Bounds.Width);
 
+
             this.StartPosition = FormStartPosition.Manual;
             this.Size = new Size(width, height);
 

@@ -9,6 +9,9 @@ using System.Windows.Forms;
 
 namespace serwmImageUploader.Classes
 {
+    /// <summary>
+    /// Implements methods to make certain types of screenshots.
+    /// </summary>
     public static class Screenshotter
     {
         // toDo: remove redundancy
@@ -42,6 +45,10 @@ namespace serwmImageUploader.Classes
         {
             try
             {
+                Screen screen = Screen.FromPoint(Cursor.Position);
+                width = screen.Bounds.Width;
+                height = screen.Bounds.Height;
+
                 //Creating a new Bitmap object
                 Bitmap captureBitmap = new Bitmap(width, height, PixelFormat.Format32bppArgb);
                 
