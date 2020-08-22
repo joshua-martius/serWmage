@@ -43,7 +43,9 @@ namespace serwmImageUploader.Classes
             SftpClient sftp = null;
             if (_config.UseKeyFile)
             {
-                PrivateKeyFile key = new PrivateKeyFile(_config.PathToKeyFile);
+                PrivateKeyFile key = null;
+                if (_config.UsingSshPassword) key = new PrivateKeyFile(_config.PathToKeyFile, _config.KeyPassword);
+                else key = new PrivateKeyFile(_config.PathToKeyFile);
                 sftp = new SftpClient(_config.Address, _config.Username, key);
             }
             else sftp = new SftpClient(_config.Address, _config.Username, _config.Password);

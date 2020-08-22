@@ -49,6 +49,8 @@
             this.grpImageSettings = new System.Windows.Forms.GroupBox();
             this.radLinkToClipboard = new System.Windows.Forms.RadioButton();
             this.radImageToClipboard = new System.Windows.Forms.RadioButton();
+            this.lblSSHPassword = new System.Windows.Forms.Label();
+            this.tbxSSHPassword = new System.Windows.Forms.TextBox();
             this.grpServerSettings.SuspendLayout();
             this.grpImageSettings.SuspendLayout();
             this.SuspendLayout();
@@ -71,11 +73,11 @@
             // 
             // tbxPassword
             // 
-            this.tbxPassword.Location = new System.Drawing.Point(70, 93);
+            this.tbxPassword.Location = new System.Drawing.Point(69, 96);
             this.tbxPassword.MaxLength = 32;
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = 'X';
-            this.tbxPassword.Size = new System.Drawing.Size(217, 20);
+            this.tbxPassword.Size = new System.Drawing.Size(218, 20);
             this.tbxPassword.TabIndex = 5;
             // 
             // lblServeraddress
@@ -99,7 +101,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(8, 96);
+            this.lblPassword.Location = new System.Drawing.Point(8, 99);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(56, 13);
             this.lblPassword.TabIndex = 5;
@@ -107,7 +109,7 @@
             // 
             // btnSaveRun
             // 
-            this.btnSaveRun.Location = new System.Drawing.Point(12, 267);
+            this.btnSaveRun.Location = new System.Drawing.Point(12, 298);
             this.btnSaveRun.Name = "btnSaveRun";
             this.btnSaveRun.Size = new System.Drawing.Size(295, 40);
             this.btnSaveRun.TabIndex = 12;
@@ -118,7 +120,7 @@
             // lblRemoteDirectory
             // 
             this.lblRemoteDirectory.AutoSize = true;
-            this.lblRemoteDirectory.Location = new System.Drawing.Point(6, 123);
+            this.lblRemoteDirectory.Location = new System.Drawing.Point(6, 150);
             this.lblRemoteDirectory.Name = "lblRemoteDirectory";
             this.lblRemoteDirectory.Size = new System.Drawing.Size(90, 13);
             this.lblRemoteDirectory.TabIndex = 8;
@@ -126,7 +128,7 @@
             // 
             // tbxRemoteDirectory
             // 
-            this.tbxRemoteDirectory.Location = new System.Drawing.Point(102, 120);
+            this.tbxRemoteDirectory.Location = new System.Drawing.Point(101, 147);
             this.tbxRemoteDirectory.MaxLength = 128;
             this.tbxRemoteDirectory.Name = "tbxRemoteDirectory";
             this.tbxRemoteDirectory.Size = new System.Drawing.Size(186, 20);
@@ -144,6 +146,8 @@
             // 
             // grpServerSettings
             // 
+            this.grpServerSettings.Controls.Add(this.tbxSSHPassword);
+            this.grpServerSettings.Controls.Add(this.lblSSHPassword);
             this.grpServerSettings.Controls.Add(this.btnOpenFolder);
             this.grpServerSettings.Controls.Add(this.btnBrowseKeyFile);
             this.grpServerSettings.Controls.Add(this.tbxKeyFilePath);
@@ -159,14 +163,14 @@
             this.grpServerSettings.Controls.Add(this.lblPassword);
             this.grpServerSettings.Location = new System.Drawing.Point(12, 12);
             this.grpServerSettings.Name = "grpServerSettings";
-            this.grpServerSettings.Size = new System.Drawing.Size(295, 177);
+            this.grpServerSettings.Size = new System.Drawing.Size(295, 208);
             this.grpServerSettings.TabIndex = 9;
             this.grpServerSettings.TabStop = false;
             this.grpServerSettings.Text = "Server Settings";
             // 
             // btnOpenFolder
             // 
-            this.btnOpenFolder.Location = new System.Drawing.Point(9, 146);
+            this.btnOpenFolder.Location = new System.Drawing.Point(9, 173);
             this.btnOpenFolder.Name = "btnOpenFolder";
             this.btnOpenFolder.Size = new System.Drawing.Size(279, 24);
             this.btnOpenFolder.TabIndex = 7;
@@ -187,12 +191,11 @@
             // 
             // tbxKeyFilePath
             // 
-            this.tbxKeyFilePath.Location = new System.Drawing.Point(69, 93);
+            this.tbxKeyFilePath.Location = new System.Drawing.Point(69, 96);
             this.tbxKeyFilePath.Name = "tbxKeyFilePath";
             this.tbxKeyFilePath.ReadOnly = true;
             this.tbxKeyFilePath.Size = new System.Drawing.Size(218, 20);
             this.tbxKeyFilePath.TabIndex = 11;
-            this.tbxKeyFilePath.Visible = false;
             // 
             // radUseSSHKey
             // 
@@ -234,7 +237,7 @@
             this.grpImageSettings.Controls.Add(this.radImageToClipboard);
             this.grpImageSettings.Controls.Add(this.chkPlayBeep);
             this.grpImageSettings.Controls.Add(this.chkOpenAfterCreation);
-            this.grpImageSettings.Location = new System.Drawing.Point(12, 195);
+            this.grpImageSettings.Location = new System.Drawing.Point(12, 226);
             this.grpImageSettings.Name = "grpImageSettings";
             this.grpImageSettings.Size = new System.Drawing.Size(295, 66);
             this.grpImageSettings.TabIndex = 10;
@@ -263,12 +266,30 @@
             this.radImageToClipboard.Text = "Image -> Clipboard";
             this.radImageToClipboard.UseVisualStyleBackColor = true;
             // 
+            // lblSSHPassword
+            // 
+            this.lblSSHPassword.AutoSize = true;
+            this.lblSSHPassword.Location = new System.Drawing.Point(8, 115);
+            this.lblSSHPassword.Name = "lblSSHPassword";
+            this.lblSSHPassword.Size = new System.Drawing.Size(56, 26);
+            this.lblSSHPassword.TabIndex = 12;
+            this.lblSSHPassword.Text = "(optional)\r\nPassword:";
+            // 
+            // tbxSSHPassword
+            // 
+            this.tbxSSHPassword.Location = new System.Drawing.Point(69, 121);
+            this.tbxSSHPassword.MaxLength = 128;
+            this.tbxSSHPassword.Name = "tbxSSHPassword";
+            this.tbxSSHPassword.PasswordChar = 'X';
+            this.tbxSSHPassword.Size = new System.Drawing.Size(218, 20);
+            this.tbxSSHPassword.TabIndex = 13;
+            // 
             // frmConfigwizard
             // 
             this.AcceptButton = this.btnSaveRun;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(312, 313);
+            this.ClientSize = new System.Drawing.Size(312, 343);
             this.Controls.Add(this.grpImageSettings);
             this.Controls.Add(this.grpServerSettings);
             this.Controls.Add(this.btnSaveRun);
@@ -309,5 +330,7 @@
         private System.Windows.Forms.GroupBox grpImageSettings;
         private System.Windows.Forms.RadioButton radLinkToClipboard;
         private System.Windows.Forms.RadioButton radImageToClipboard;
+        private System.Windows.Forms.Label lblSSHPassword;
+        private System.Windows.Forms.TextBox tbxSSHPassword;
     }
 }

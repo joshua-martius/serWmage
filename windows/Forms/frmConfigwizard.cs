@@ -31,6 +31,9 @@ namespace serwmImageUploader
             this.radImageToClipboard.Checked = !config.LinkToClipboard;
             this.radLinkToClipboard.Checked = config.LinkToClipboard;
 
+            this.tbxSSHPassword.Visible = config.UseKeyFile;
+            this.lblSSHPassword.Visible = config.UseKeyFile;
+
             radUseSSHKey.Checked = config.UseKeyFile;
             radUsePassword.Checked = !config.UseKeyFile;
 
@@ -61,6 +64,7 @@ namespace serwmImageUploader
                 _config.LinkToClipboard = radLinkToClipboard.Checked;
                 _config.UseKeyFile = radUseSSHKey.Checked;
                 _config.PlayBeep = chkPlayBeep.Checked;
+                _config.KeyPassword = tbxSSHPassword.Text;
                 if (_config.UseKeyFile) _config.PathToKeyFile = tbxKeyFilePath.Text;
                 _config.Save();
                 this.DialogResult = DialogResult.OK;
@@ -79,6 +83,8 @@ namespace serwmImageUploader
             btnBrowseKeyFile.Visible = radUseSSHKey.Checked;
 
             tbxPassword.Visible = radUsePassword.Checked;
+            tbxSSHPassword.Visible = radUseSSHKey.Checked;
+            lblSSHPassword.Visible = radUseSSHKey.Checked;
 
             if (tbxPassword.Visible) lblPassword.Text = "Password: ";
             else lblPassword.Text = "SSH-File:";

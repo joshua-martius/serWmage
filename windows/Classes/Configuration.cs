@@ -11,7 +11,7 @@ namespace serwmImageUploader
 {
     public class Configuration
     {
-        private const int CONFIG_AMOUNT = 9;
+        private const int CONFIG_AMOUNT = 10;
 
         private string[] _config = new string[CONFIG_AMOUNT];
        
@@ -27,6 +27,16 @@ namespace serwmImageUploader
                 else _config[6] = value;
             }
         }
+
+        /// <summary>
+        /// The (optional) password for the SSH-Keyfile.
+        /// </summary>
+        public string KeyPassword { get => _config[9]; set => _config[9] = value; }
+
+        /// <summary>
+        /// Indicates if a password protected ssh keyfile is used.
+        /// </summary>
+        public bool UsingSshPassword { get => !_config[9].Equals(""); }
 
         /// <summary>
         /// Indicates wether the actual image or the link to the image should be copied into the clipboard.
