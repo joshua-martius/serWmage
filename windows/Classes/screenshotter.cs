@@ -90,8 +90,10 @@ namespace serwmImageUploader.Classes
             int left = captureRectangle.Left;
             int top = captureRectangle.Top;
 
+            int leftOffset = Screen.AllScreens.Min(s => s.Bounds.Width);
+
             if(Screen.AllScreens.Count() == 1) captureGraphics.CopyFromScreen(left, top, 0, 0, captureRectangle.Size);
-            else captureGraphics.CopyFromScreen(left - 1920, top, 0, 0, captureRectangle.Size);
+            else captureGraphics.CopyFromScreen(left - leftOffset, top, 0, 0, captureRectangle.Size);
 
             //Saving the Image File
             filepath = string.Format("{0}\\tmp.png", filepath);
