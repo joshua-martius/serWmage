@@ -66,7 +66,7 @@
             // tbxUsername
             // 
             this.tbxUsername.Location = new System.Drawing.Point(104, 41);
-            this.tbxUsername.MaxLength = 10;
+            this.tbxUsername.MaxLength = 32;
             this.tbxUsername.Name = "tbxUsername";
             this.tbxUsername.Size = new System.Drawing.Size(185, 20);
             this.tbxUsername.TabIndex = 1;
@@ -74,7 +74,7 @@
             // tbxPassword
             // 
             this.tbxPassword.Location = new System.Drawing.Point(69, 96);
-            this.tbxPassword.MaxLength = 32;
+            this.tbxPassword.MaxLength = 64;
             this.tbxPassword.Name = "tbxPassword";
             this.tbxPassword.PasswordChar = 'X';
             this.tbxPassword.Size = new System.Drawing.Size(218, 20);
